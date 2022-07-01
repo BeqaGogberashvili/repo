@@ -1,0 +1,18 @@
+$purple: #7025FB;
+$red: #FD5334;
+$black: #212529;
+
+@mixin flex($align, $direction) {
+    display: flex;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+@import "global";
+@import "landing";
+
+
+
+
+// font-family: 'Nunito', sans-serif;
+// font-family: 'Open Sans', sans-serif;
