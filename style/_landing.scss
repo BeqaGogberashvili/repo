@@ -1,93 +1,94 @@
 .main-container {
     min-height: 100vh;
     font-family: 'Nunito', sans-serif;
+    // background: url("../Untitled.png");
 
     .space-left {
         float: left;
-        width: 48.1%;
+        width: 923px;
 
-        .main-header {
+        .landing-header {
             @include flex(center, row);
             padding-left: 61px;
-            min-height: 8.7vh;
+            min-height: 84px;
             background-color: $purple;
 
+            padding-bottom: 3px;
+
             h1 {
+                color: #212529;
                 font-family: 'Nunito', sans-serif;
-                padding-left: 6px;
+                padding-left: 6.5px;
                 font-size: 2.5rem;
+                font-weight: 1000;
                 color: white;
             }
         }
 
-        .main-bg-image {
-            min-height: 91.3vh;
+        .content-left {
             background: url("../img/Landing\ page-\ scrolling\ photo.png");
-            background-repeat: no-repeat;
             background-size: cover;
+            width: 923.52px;
+            min-height: 996px;
         }
+
+
     }
 
     .space-right {
-        min-height: 100vh;
-        background-color: $red;
-        float: right;
-        width: 51.9%;
 
-        h1 {
-            color: white;
-            font-size: 8rem;
-            margin-left: 8.5rem;
-        }
+        .landing {
+            min-height: 100vh;
+            background-color: $red;
+            display: none;
 
-        .top-line {
-            @include flex(center, row);
-            margin-top: 26.5rem;
-            margin-bottom: 1.6rem;
-
-            #top-title-big {
-                font-weight: 800;
-            }
-
-            #top-title-small {
-                color: $black;
-                font-size: 2rem;
-                margin-left: 2.6rem
-            }
-        }
-
-        .botton-line {
-            @include flex(left, column);
-
-            #bottom-title-big {
-                font-weight: 900;
-            }
-
-            button {
-                @include flex(center, row);
-                font-family: 'Open Sans', sans-serif;
-                border: 4px solid transparent;
-                border-radius: 8px;
-                background-color: $black;
+            h1 {
                 color: white;
-                width: 19.1rem;
-                height: 5.3rem;
-                font-size: 2rem;
-                padding-left: 2.4rem;
+                font-size: 8rem;
                 margin-left: 8.5rem;
-                margin-top: 10.2rem;
-                cursor: pointer;
+            }
 
-                &:hover {
-                    border: 4px solid #C2A5F9;
+            .top-line {
+                @include flex(center, row);
+                margin-top: 26.5rem;
+                margin-bottom: 1.6rem;
+
+                #top-title-big {
+                    font-weight: 800;
                 }
 
-                img {
-                    padding-left: 1.5rem;
+                #top-title-small {
+                    color: $black;
+                    font-size: 2rem;
+                    margin-left: 2.6rem
+                }
+            }
+
+            .botton-line {
+                @include flex(left, column);
+
+                #bottom-title-big {
+                    font-weight: 900;
+                }
+
+                button {
+                    width: 19.1rem;
+                    height: 5.3rem;
+                    padding-left: 2.4rem;
+                    margin-left: 8.5rem;
+                    margin-top: 10.2rem;
+                    background-color: $black;
+                    color: white;
+
+                    &:hover {
+                        border: 4px solid #C2A5F9;
+                    }
+
+                    img {
+                        padding-left: 1.5rem;
+                    }
                 }
             }
         }
-
-
     }
 }

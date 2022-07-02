@@ -1,0 +1,195 @@
+.title-left {
+    display: none;
+    font-family: 'Nunito', sans-serif;
+    font-style: italic;
+    margin-left: 12.4rem;
+    margin-top: 24.5rem;
+
+    h1 {
+        color: $black;
+        font-weight: 800;
+        font-size: 2.6rem;
+        padding: 0.66rem;
+    }
+
+    h2 {
+        color: $white;
+        font-weight: 500;
+        font-size: 2.4rem;
+        margin-left: 0.75rem;
+        margin-top: 1.55rem;
+    }
+}
+
+.personal {
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+
+    .header-personal {
+        min-height: 84px;
+        border-bottom: 1px solid $grey;
+
+        h1 {
+            margin-left: 4.85rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            padding-top: 3.1rem;
+        }
+    }
+
+    .progress {
+        margin-left: 4.85rem;
+
+        h1 {
+            @include flex(center, row);
+            justify-content: center;
+            border: 1px solid $grey;
+            border-radius: 8px;
+            width: 4rem;
+            height: 4rem;
+        }
+
+        h3 {
+            font-weight: 400;
+            font-size: 1.6rem;
+            margin-top: 0.5rem;
+        }
+
+        .progress-up {
+            margin-left: 5.9rem;
+            margin-top: 6rem;
+            @include flex(center, row);
+
+            .square {
+                @include flex(center, column);
+            }
+
+            .line {
+                background-color: $grey;
+                width: 174px;
+                height: 1px;
+                margin: 0 0.4rem;
+            }
+        }
+
+        .progress-down {
+            @include flex(center, row);
+
+            h3 {
+                margin-right: 7.8rem;
+            }
+        }
+    }
+
+    .personal-title {
+        margin-left: 4.85rem;
+        margin-top: 11.5rem;
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 600;
+        }
+
+        h4 {
+            margin-top: 0.7rem;
+            font-size: 1.4rem;
+            color: #95939A;
+            font-weight: 500;
+        }
+    }
+
+    p::after {
+        content: attr(data-end);
+        color: red;
+        font-size: 2rem
+    }
+
+    .personal-inputs {
+        @include flex(left, column);
+        margin-left: 4.9rem;
+        margin-top: 6.8rem;
+
+        input {
+            padding: 0.8rem 1.6rem;
+            font-size: 2rem;
+            border: none;
+            border-bottom: 1px solid #DFDFDF;
+            border-radius: 0.4px;
+            margin: 2.3rem 0rem;
+            background: transparent;
+
+            &:focus {
+                outline: none;
+            }
+
+            &::placeholder {
+                color: $black;
+
+            }
+
+
+        }
+
+        .input-placeholder {
+            position: relative;
+        }
+
+        .input-placeholder input {
+            width: 775px;
+        }
+
+        .input-placeholder input:valid+.placeholder {
+            display: none;
+        }
+
+        .placeholder {
+            position: absolute;
+            pointer-events: none;
+            font-size: 2rem;
+            top: 28px;
+            left: 16px;
+            bottom: 2px;
+            margin: auto;
+            color: black;
+        }
+
+        .placeholder span {
+            color: red;
+            font-size: 1.6rem;
+        }
+
+    }
+
+    .navigation-buttons {
+        @include flex(center, row);
+        margin-left: 4.8rem;
+        margin-top: 6.3rem;
+
+        .next {
+            margin-left: 55rem;
+            padding: 13px 24px;
+            background-color: $black;
+            color: white;
+            border: 4px solid white;
+            border-radius: 12px;
+
+            &:hover {
+                border: 4px solid #C2A5F9;
+            }
+
+            img {
+                padding-left: 1.5rem;
+            }
+        }
+
+        .back {
+            padding: 12px 24px;
+            border: 1px solid $black;
+            background-color: transparent;
+
+            &:hover {
+                background-color: $grey;
+            }
+        }
+    }
+}

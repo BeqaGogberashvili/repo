@@ -1,6 +1,8 @@
 $purple: #7025FB;
 $red: #FD5334;
 $black: #212529;
+$grey: rgba(185, 180, 195, 0.3);
+$white: #E5E6E8;
 
 @mixin flex($align, $direction) {
     display: flex;
@@ -10,6 +12,7 @@ $black: #212529;
 
 @import "global";
 @import "landing";
+@import "personal-info";
 
 
 
