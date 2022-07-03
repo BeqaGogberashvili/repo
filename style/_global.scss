@@ -20,3 +20,43 @@ button {
     font-size: 2rem;
     cursor: pointer;
 }
+
+.next {
+    margin-left: 55rem;
+    padding: 13px 24px;
+    background-color: $black;
+    color: white;
+    border: 4px solid white;
+    border-radius: 8px;
+
+    &:hover {
+        border: 4px solid #C2A5F9;
+    }
+
+    img {
+        padding-left: 1.5rem;
+    }
+}
+
+.back {
+    padding: 12px 24px;
+    border: 1px solid $black;
+    background-color: transparent;
+
+    &:hover {
+        background-color: $grey;
+    }
+}
+
+.left-bg {
+    width: 923.52px;
+    min-height: 996px;
+}
+
+.landing-bg {
+    background: url("../img/Landing\ page-\ scrolling\ photo.png");
+}
+
+.personal-bg {
+    background: url("../img/unsplash_27LH_0jXKYI.png");
+}
