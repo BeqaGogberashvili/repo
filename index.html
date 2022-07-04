@@ -19,7 +19,7 @@
 
     <div class="main-container">
 
-        <!-- FIrst Page -->
+        <!-- Landing Page -->
 
         <div class="step landing">
 
@@ -47,9 +47,9 @@
         </div>
 
 
-        <!-- Second Page -->
+        <!-- Personal Information Page -->
 
-        <div class="step personal">
+        <div class="step personal-information">
 
             <div class="space-left">
                 <div class="landing-header">
@@ -132,7 +132,192 @@
             </div>
         </div>
 
+        <!-- Chess Experience -->
 
+        <div class="step chess-experience">
+
+            <div class="space-left">
+                <div class="landing-header">
+                    <img src="./img/Crown.svg">
+                    <h1>Redberry Knight Cup</h1>
+                </div>
+
+                <div class="left-bg chess-bg">
+                    <div class="title-left-chess">
+                        <h1>“MANY HAVE BECOME CHESS MASTERS;</h1>
+                        <h1>NO ONE HAS BECOME THE MASTER OF CHESS.”</h1>
+                        <h2>- SIEGBERT TARRASCH</h2>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="space-right">
+                <div class="header-personal">
+                    <h1>First Step Is Done, Continue To Finish Onboarding</h1>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-up">
+                        <div class="square first">
+                            <h1><img src="./img/Double-checkmark.svg" alt=""></h1>
+                        </div>
+                        <div class="line"></div>
+                        <div class="square second">
+                            <h1>2</h1>
+                        </div>
+                    </div>
+
+                    <div class="progress-down">
+                        <h3>Personal information</h3>
+                        <h3>Chess experience</h3>
+                    </div>
+                </div>
+
+                <div class="personal-title">
+                    <h1>Chess experience</h1>
+                    <h4>This Is Basic Information Fields</h4>
+                </div>
+
+                <div class="chess-selectors">
+
+                    <!-- First Select Box -->
+
+                    <div class="select-box">
+
+                        <div class="current" tabindex="1">
+
+                            <div class="box-value">
+                                <input class="box-input" type="radio" id="0" value="1" name="first-box"
+                                    checked="checked" />
+                                <p class="box-input-text">Beginner</p>
+                            </div>
+                            <div class="box-value">
+                                <input class="box-input" type="radio" id="1" value="2" name="first-box"
+                                    checked="checked" />
+                                <p class="box-input-text">Intermediate</p>
+                            </div>
+                            <div class="box-value">
+                                <input class="box-input" type="radio" id="2" value="3" name="first-box"
+                                    checked="checked" />
+                                <p class="box-input-text">Milk</p>
+                            </div>
+
+                            <div class="box-value">
+                                <input class="box-input" type="radio" name="first-box" checked="checked" />
+                                <p class="box-input-text">level of knowledge<span class="star">
+                                        *</span></p>
+                            </div>
+
+                            <img class="box-icon" src="./img/Select-arrow.svg" alt="Arrow Icon" />
+
+                        </div>
+                        <ul class="box-list">
+
+                            <li>
+                                <label class="box-option" for="0">Beginner</label>
+                            </li>
+                            <li>
+                                <label class="box-option" for="1">Intermediate</label>
+                            </li>
+                            <li>
+                                <label class="box-option" for="2">Milk</label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Second Select Box -->
+
+                    <div class="select-box second-box">
+                        <div class="current" tabindex="1">
+
+                            <div class="box-value">
+                                <input class="box-input" type="radio" id="3" value="1" name="second-box"
+                                    checked="checked" />
+                                <p class="box-input-text">Magnus Carlsen</p>
+                            </div>
+                            <div class="box-value">
+                                <input class="box-input" type="radio" id="4" value="2" name="second-box"
+                                    checked="checked" />
+                                <p class="box-input-text">Wilhelm Steinitz</p>
+                            </div>
+                            <div class="box-value">
+                                <input class="box-input" type="radio" id="5" value="3" name="second-box"
+                                    checked="checked" />
+                                <p class="box-input-text">Bobby Fischer</p>
+                            </div>
+                            <div class="box-value">
+                                <input class="box-input" type="radio" id="6" value="3" name="second-box"
+                                    checked="checked" />
+                                <p class="box-input-text">Bobby Fischer</p>
+                            </div>
+
+                            <div class="box-value">
+                                <input class="box-input" type="radio" name="second-box" checked="checked" />
+                                <p class="box-input-text">Choose your character<span class="star">
+                                        *</span></p>
+                            </div>
+
+                            <img class="box-icon" src="./img/Select-arrow.svg" alt="Arrow Icon" />
+
+                        </div>
+                        <ul class="box-list">
+
+                            <li>
+                                <label class="box-option" for="3">Magnus Carlsen</label>
+                            </li>
+                            <li>
+                                <label class="box-option" for="4">Wilhelm Steinitz</label>
+                            </li>
+                            <li>
+                                <label class="box-option" for="5">Bobby Fischer</label>
+                            </li>
+                            <li>
+                                <label class="box-option" for="6">Bobby Fischer</label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- END -->
+                    <div class="participated-radio">
+                        <h1>Have you participated in the Redberry Championship?<span class="star">*</span></h1>
+
+                        <div class="participated-radio-options">
+                            <input type="radio" id="yes" name="fav_language" value="HTML">
+                            <label for="yes">Yes</label>
+                            <input type="radio" id="no" name="fav_language" value="HTML">
+                            <label for="no">No</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="navigation-buttons">
+                    <button class="back">Back</button>
+                    <button class="next">Next<img src="./img/Arrow-right.svg"></button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Onboard Completed -->
+
+        <div class="step onboard-completed">
+
+            <div class="space-left">
+                <div class="landing-header">
+                    <img src="./img/Crown.svg">
+                    <h1>Redberry Knight Cup</h1>
+                </div>
+
+                <div class="left-bg completed-bg"></div>
+
+            </div>
+
+            <div class="space-right">
+                <img src="./img/Onboarding completed!.png" alt="">
+            </div>
+
+        </div>
 
     </div>
 

@@ -1,0 +1,83 @@
+.chess-experience {
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.title-left-chess {
+    font-family: 'Nunito', sans-serif;
+    font-style: italic;
+    margin-left: 110px;
+    margin-top: 190px;
+
+    h1 {
+        color: $black;
+        font-weight: 800;
+        font-size: 26px;
+        padding: 6.6px;
+    }
+
+    h2 {
+        color: #093F68;
+        font-weight: 500;
+        font-size: 24px;
+        margin-left: 355px;
+        margin-top: 25px;
+    }
+}
+
+.level-of-knowledge {
+    width: 312px;
+    display: none;
+}
+
+.chess-selectors {
+    position: relative;
+    min-height: 300px;
+    margin-left: 38.8px;
+    margin-top: 98px;
+}
+
+.participated-radio {
+    margin-top: 133.5px;
+    margin-left: 15px;
+
+
+    h1 {
+        font-weight: 400;
+    }
+
+    .participated-radio-options {
+        @include flex(center, row);
+        padding-bottom: 87px;
+
+        label {
+            font-size: 16px;
+            padding-right: 18px;
+            margin-left: 9.2px;
+        }
+
+        .star {
+            margin-left: 6px;
+        }
+
+        input[type=radio] {
+            margin-left: 2px;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+}
+
+
+.onboard-completed {
+    background: url("../Untitled5.png");
+
+    .space-right {
+
+        img {
+            margin-top: 416px;
+            margin-left: 279px;
+        }
+    }
+}

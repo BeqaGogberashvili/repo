@@ -1,174 +1,148 @@
 .title-left {
     font-family: 'Nunito', sans-serif;
     font-style: italic;
-    margin-left: 12.4rem;
-    margin-top: 24.5rem;
+    margin-left: 124px;
+    margin-top: 245px;
 
     h1 {
         color: $black;
         font-weight: 800;
-        font-size: 2.6rem;
-        padding: 0.66rem;
+        font-size: 26px;
+        padding: 6.6px;
     }
 
     h2 {
         color: $white;
         font-weight: 500;
-        font-size: 2.4rem;
-        margin-left: 0.75rem;
-        margin-top: 1.55rem;
+        font-size: 24px;
+        margin-left: 7.5px;
+        margin-top: 15.5px;
     }
 }
 
-.personal {
+.personal-information {
     min-height: 100vh;
     font-family: 'Open Sans', sans-serif;
+}
 
-    .header-personal {
-        min-height: 84px;
-        border-bottom: 1px solid $grey;
+.header-personal {
+    min-height: 84px;
+    border-bottom: 1px solid $grey;
 
-        h1 {
-            margin-left: 4.85rem;
-            font-size: 1.6rem;
-            font-weight: 600;
-            padding-top: 3.1rem;
+    h1 {
+        margin-left: 28.5px;
+        font-size: 16px;
+        font-weight: 600;
+        padding-top: 31px;
+    }
+}
+
+.progress {
+    margin-left: 48.5px;
+
+    h1 {
+        @include flex(center, row);
+        justify-content: center;
+        border: 1px solid $grey;
+        border-radius: 8px;
+        width: 40px;
+        height: 40px;
+    }
+
+    h3 {
+        font-weight: 400;
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    .progress-up {
+        margin-left: 59px;
+        margin-top: 60px;
+        @include flex(center, row);
+
+        .square {
+            @include flex(center, column);
+        }
+
+        .line {
+            background-color: $grey;
+            width: 174px;
+            height: 1px;
+            margin: 0 0.4rem;
         }
     }
 
-    .progress {
-        margin-left: 4.85rem;
-
-        h1 {
-            @include flex(center, row);
-            justify-content: center;
-            border: 1px solid $grey;
-            border-radius: 8px;
-            width: 4rem;
-            height: 4rem;
-        }
+    .progress-down {
+        @include flex(center, row);
 
         h3 {
-            font-weight: 400;
-            font-size: 1.6rem;
-            margin-top: 0.5rem;
-        }
-
-        .progress-up {
-            margin-left: 5.9rem;
-            margin-top: 6rem;
-            @include flex(center, row);
-
-            .square {
-                @include flex(center, column);
-            }
-
-            .line {
-                background-color: $grey;
-                width: 174px;
-                height: 1px;
-                margin: 0 0.4rem;
-            }
-        }
-
-        .progress-down {
-            @include flex(center, row);
-
-            h3 {
-                margin-right: 7.8rem;
-            }
+            margin-right: 78px;
         }
     }
+}
 
-    .personal-title {
-        margin-left: 4.85rem;
-        margin-top: 11.5rem;
+.personal-title {
+    margin-left: 48.5px;
+    margin-top: 115px;
 
-        h1 {
-            font-size: 3.2rem;
-            font-weight: 600;
-        }
-
-        h4 {
-            margin-top: 0.7rem;
-            font-size: 1.4rem;
-            color: #95939A;
-            font-weight: 500;
-        }
+    h1 {
+        font-size: 32px;
+        font-weight: 600;
     }
 
-    p::after {
-        content: attr(data-end);
+    h4 {
+        margin-top: 7px;
+        font-size: 14px;
+        color: #95939A;
+        font-weight: 500;
+    }
+}
+
+p::after {
+    content: attr(data-end);
+    color: red;
+    font-size: 20px
+}
+
+.personal-inputs {
+    @include flex(left, column);
+    margin-left: 49px;
+    margin-top: 68px;
+
+    .input-placeholder {
+        position: relative;
+    }
+
+    .input-placeholder input {
+        width: 775px;
+
+    }
+
+    .input-placeholder input:valid+.placeholder {
+        display: none;
+    }
+
+    .placeholder {
+        position: absolute;
+        pointer-events: none;
+        font-size: 20px;
+        top: 28px;
+        left: 16px;
+        bottom: 2px;
+        margin: auto;
+        color: black;
+
+    }
+
+    .placeholder span {
         color: red;
-        font-size: 2rem
+        font-size: 1.6rem;
     }
 
-    .personal-inputs {
-        @include flex(left, column);
-        margin-left: 4.9rem;
-        margin-top: 6.8rem;
+}
 
-        input {
-            padding: 0.8rem 1.6rem;
-            font-size: 2rem;
-            border: none;
-            border-bottom: 1px solid #DFDFDF;
-            border-radius: 4px;
-            margin: 2.3rem 0rem;
-            background: transparent;
-
-            &::placeholder {
-                color: $black;
-            }
-
-            &:hover {
-                background-color: #F8F9FA;
-            }
-
-            &:focus {
-                outline: none;
-                background-color: #E9ECEF;
-            }
-
-        }
-
-        .input-placeholder {
-            position: relative;
-        }
-
-        .input-placeholder input {
-            width: 775px;
-
-        }
-
-        .input-placeholder input:valid+.placeholder {
-            display: none;
-        }
-
-        .placeholder {
-            position: absolute;
-            pointer-events: none;
-            font-size: 2rem;
-            top: 28px;
-            left: 16px;
-            bottom: 2px;
-            margin: auto;
-            color: black;
-
-        }
-
-        .placeholder span {
-            color: red;
-            font-size: 1.6rem;
-        }
-
-    }
-
-    .navigation-buttons {
-        @include flex(center, row);
-        margin-left: 4.8rem;
-        margin-top: 6.3rem;
-
-
-    }
+.navigation-buttons {
+    @include flex(center, row);
+    margin-left: 48px;
+    margin-top: 63px;
 }

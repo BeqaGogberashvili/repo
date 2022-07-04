@@ -13,16 +13,40 @@ a {
     text-decoration: none;
 }
 
+input {
+    padding: 8px 16px;
+    font-size: 20px;
+    border: none;
+    border-bottom: 1px solid #DFDFDF;
+    border-radius: 4px;
+    margin: 23px 0;
+    background: transparent;
+
+    &::placeholder {
+        color: $black;
+    }
+
+    &:hover {
+        background-color: #F8F9FA;
+    }
+
+    &:focus {
+        outline: none;
+        background-color: #E9ECEF;
+    }
+
+}
+
 button {
     @include flex(center, row);
     font-family: 'Open Sans', sans-serif;
     border-radius: 8px;
-    font-size: 2rem;
+    font-size: 20px;
     cursor: pointer;
 }
 
 .next {
-    margin-left: 55rem;
+    margin-left: 550px;
     padding: 13px 24px;
     background-color: $black;
     color: white;
@@ -34,7 +58,7 @@ button {
     }
 
     img {
-        padding-left: 1.5rem;
+        padding-left: 15px;
     }
 }
 
@@ -59,4 +83,12 @@ button {
 
 .personal-bg {
     background: url("../img/unsplash_27LH_0jXKYI.png");
+}
+
+.chess-bg {
+    background: url("../img/unsplash_27LH_0jXKYI2.png");
+}
+
+.completed-bg {
+    background: url("../img/unsplash_27LH_0jXKYI3.png");
 }

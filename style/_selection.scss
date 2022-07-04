@@ -1,0 +1,114 @@
+.select-box {
+    width: 392px;
+    overflow: visible;
+    position: absolute;
+    display: block;
+    font-size: 20px;
+    color: $black;
+    border-bottom: 1px solid $grey;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+.second-box {
+    margin-left: 415px;
+}
+
+.current {
+    position: relative;
+    cursor: pointer;
+    outline: none;
+}
+
+.current:focus+.box-list {
+    opacity: 1;
+    animation-name: none;
+}
+
+.current:focus+.box-list .box-option {
+    cursor: pointer;
+}
+
+.current:focus .box-icon {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.box-icon {
+    position: absolute;
+    top: 50%;
+    right: 19.5px;
+    transform: translateY(-50%);
+    transition: 0.2s ease;
+}
+
+.box-value {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.box-input {
+    display: none;
+    color: black;
+}
+
+.box-input:checked+.box-input-text {
+    display: block;
+}
+
+.box-input-text {
+    display: none;
+    width: 100%;
+    margin: 0;
+    padding: 8px 16px;
+}
+
+.box-list {
+    margin-left: 11px;
+    position: absolute;
+    margin-top: 10px;
+    width: 100%;
+    padding: 20px 0px;
+    list-style: none;
+    opacity: 0;
+    animation-name: HideList;
+    animation-duration: 0.5s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: step-start;
+    box-shadow: 0px 0px 10px $grey;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.box-option {
+    font-size: 20px;
+    width: 100%;
+    display: block;
+    padding: 8px 20px;
+}
+
+.box-option:hover,
+.box-option:focus {
+    font-weight: 600;
+    background-color: $grey;
+}
+
+.star {
+    color: red;
+    font-size: 16px;
+    margin-left: 2px;
+}
+
+
+@keyframes HideList {
+    from {
+        transform: scaleY(1);
+    }
+
+    to {
+        transform: scaleY(0);
+    }
+}
+
+/*# sourceMappingURL=style.css.map */

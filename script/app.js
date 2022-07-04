@@ -1,14 +1,4 @@
-
-const contentLeft = document.querySelector(".content-left")
-
-
-
-
-
-
-
 const steps = document.querySelectorAll(".step")
-
 const nextButtons = document.querySelectorAll(".next")
 const backButtons = document.querySelectorAll(".back")
 
@@ -20,21 +10,15 @@ displayCurrentStep(currentStep);
 
 
 function displayCurrentStep(currentStep) {
-    // Removing active class from any other step
     steps.forEach(step => {
         step.style.display = "none"
     });
-    // Adding to current one
     steps[currentStep].style.display = "block"
 }
 
 
-
-// Next button
-
 nextButtons.forEach((button, index) => {
     button.addEventListener('click', (e) => {
-        // Preventing form from submitting
         e.preventDefault()
 
         switch (index) {
@@ -44,6 +28,9 @@ nextButtons.forEach((button, index) => {
                 break;
 
             case 1:
+                currentStep++
+                break;
+            case 2:
                 currentStep++
                 break;
         }
@@ -60,10 +47,6 @@ backButtons.forEach(button => {
         displayCurrentStep(currentStep)
     })
 })
-
-
-
-
 
 
 
