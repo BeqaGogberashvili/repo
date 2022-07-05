@@ -15,7 +15,6 @@ a {
 }
 
 input {
-  padding: 8px 16px;
   font-size: 20px;
   border: none;
   border-bottom: 1px solid #DFDFDF;
@@ -112,6 +111,16 @@ button {
 
 .completed-bg {
   background: url("../img/unsplash_27LH_0jXKYI3.png");
+}
+
+input[type=date]:required:invalid::-webkit-datetime-edit,
+input[type=date]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+input[type=date]::-webkit-datetime-edit {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
 }
 
 .main-container {
@@ -341,6 +350,15 @@ button {
   margin-right: 78px;
 }
 
+.second-square-personal h1 {
+  color: #95939A;
+  background-color: #F5F5F5;
+}
+
+.first-square-chess h1 {
+  background-color: #E9FAF1;
+}
+
 .personal-title {
   margin-left: 48.5px;
   margin-top: 115px;
@@ -385,6 +403,11 @@ p::after {
 
 .personal-inputs .input-placeholder input {
   width: 775px;
+  padding: 8px 16px;
+}
+
+.personal-inputs .date-placeholder input {
+  padding: 5px 16px;
 }
 
 .personal-inputs .input-placeholder input:valid + .placeholder {
@@ -420,6 +443,17 @@ p::after {
           flex-direction: row;
   margin-left: 48px;
   margin-top: 63px;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: 0;
+  top: 22px;
+  width: 772px;
+  height: 45px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
 }
 
 .chess-experience {

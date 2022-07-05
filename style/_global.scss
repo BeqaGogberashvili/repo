@@ -14,7 +14,6 @@ a {
 }
 
 input {
-    padding: 8px 16px;
     font-size: 20px;
     border: none;
     border-bottom: 1px solid #DFDFDF;
@@ -91,4 +90,15 @@ button {
 
 .completed-bg {
     background: url("../img/unsplash_27LH_0jXKYI3.png");
+}
+
+
+input[type=date]:required:invalid::-webkit-datetime-edit,
+input[type=date]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+input[type=date]::-webkit-datetime-edit {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
 }

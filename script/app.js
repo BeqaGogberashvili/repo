@@ -3,10 +3,8 @@ const nextButtons = document.querySelectorAll(".next")
 const backButtons = document.querySelectorAll(".back")
 
 
-let currentStep = 0;
+let currentStep = 1;
 displayCurrentStep(currentStep);
-
-
 
 
 function displayCurrentStep(currentStep) {
@@ -47,25 +45,3 @@ backButtons.forEach(button => {
         displayCurrentStep(currentStep)
     })
 })
-
-
-
-// window.onclick = function (event) {
-
-
-//     if (event.target === firstInput) {
-
-//         window.onclick = () => {
-
-//             if (firstInput.value === "") {
-//                 error.style.display = "block";
-//             } else {
-//                 error.style.display = "none";
-//             }
-
-//         }
-//     }
-
-// }
-
-

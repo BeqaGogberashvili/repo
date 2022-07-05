@@ -81,6 +81,19 @@
     }
 }
 
+.second-square-personal {
+    h1 {
+        color: #95939A;
+        background-color: #F5F5F5;
+    }
+}
+
+.first-square-chess {
+    h1 {
+        background-color: #E9FAF1;
+    }
+}
+
 .personal-title {
     margin-left: 48.5px;
     margin-top: 115px;
@@ -115,7 +128,11 @@ p::after {
 
     .input-placeholder input {
         width: 775px;
+        padding: 8px 16px;
+    }
 
+    .date-placeholder input {
+        padding: 5px 16px;
     }
 
     .input-placeholder input:valid+.placeholder {
@@ -131,7 +148,6 @@ p::after {
         bottom: 2px;
         margin: auto;
         color: black;
-
     }
 
     .placeholder span {
@@ -145,4 +161,15 @@ p::after {
     @include flex(center, row);
     margin-left: 48px;
     margin-top: 63px;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+    position: absolute;
+    left: 0;
+    top: 22px;
+    width: 772px;
+    height: 45px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
 }
