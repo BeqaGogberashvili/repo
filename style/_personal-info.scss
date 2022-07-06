@@ -94,6 +94,68 @@
     }
 }
 
+.errors {
+    @include flex(left, column);
+    position: absolute;
+    width: 370px;
+    height: 420px;
+    top: 220px;
+    right: 29px;
+}
+
+.error {
+    display: none;
+    width: 350px;
+    margin: 5px auto;
+    padding: 7.2px 12px;
+    box-shadow: 0px 3px 10px 2px $grey;
+    border-radius: 4px;
+    z-index: 1;
+    background-color: white;
+}
+
+.error-up {
+    @include flex(center, row);
+    border-bottom: 1px solid $grey;
+    padding-bottom: 4px;
+    position: relative;
+
+    p {
+        color: $dark-red;
+        font-size: 14px;
+        font-weight: 600;
+        padding-left: 8px;
+    }
+
+    .x {
+        position: absolute;
+        top: 8px;
+        right: 1px;
+        cursor: pointer;
+    }
+}
+
+.error-down {
+    p {
+        font-size: 16px;
+        font-weight: 400;
+        padding: 10px 0;
+    }
+}
+
+.error-input {
+    display: block !important;
+    color: $dark-red;
+    background-color: $light-red;
+}
+
+.success-input {
+    background: url("../img/Checkmark.svg");
+    background-repeat: no-repeat;
+    background-position-x: 735px;
+    background-position-y: 8px;
+}
+
 .personal-title {
     margin-left: 48.5px;
     margin-top: 115px;

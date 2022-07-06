@@ -74,7 +74,7 @@
                 <div class="progress">
                     <div class="progress-up">
                         <div class="square first-square-personal">
-                            <h1>1</h1>
+                            <h1 class="first-square-personal-inside">1</h1>
                         </div>
                         <div class="line"></div>
                         <div class="square second-square-personal">
@@ -88,6 +88,54 @@
                     </div>
                 </div>
 
+                <div class="errors">
+
+                    <div class="error name-error">
+                        <div class="error-up">
+                            <img src="./img/Alert.svg" alt="alert">
+                            <p>Invalid name</p>
+                            <img src="./img/X.svg" class="x" alt="x">
+                        </div>
+                        <div class="error-down">
+                            <p class="name-error-text"></p>
+                        </div>
+                    </div>
+
+                    <div class="error email-error">
+                        <div class="error-up">
+                            <img src="./img/Alert.svg" alt="alert">
+                            <p>Invalid email</p>
+                            <img src="./img/X.svg" class="x" alt="x">
+                        </div>
+                        <div class="error-down">
+                            <p>Please enter valid email address</p>
+                        </div>
+                    </div>
+
+                    <div class="error phone-error">
+                        <div class="error-up">
+                            <img src="./img/Alert.svg" alt="alert">
+                            <p>Invalid phone</p>
+                            <img src="./img/X.svg" class="x" alt="x">
+                        </div>
+                        <div class="error-down">
+                            <p>Phone number must contain 9 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="error date-error">
+                        <div class="error-up">
+                            <img src="./img/Alert.svg" alt="alert">
+                            <p>Invalid date</p>
+                            <img src="./img/X.svg" class="x" alt="x">
+                        </div>
+                        <div class="error-down">
+                            <p>Date input can not be empty</p>
+                        </div>
+                    </div>
+
+                </div>
+
                 <div class="personal-title">
                     <h1>Personal information</h1>
                     <h4>This Is Basic Information Fields</h4>
@@ -96,28 +144,31 @@
                 <div class="personal-inputs">
 
                     <div class="input-placeholder">
-                        <input type="text" required>
+                        <input type="text" class="name" oninput="removeErrorClass(nameInput, nameError)" required>
                         <div class="placeholder">
                             Name <span>*</span>
                         </div>
                     </div>
 
                     <div class="input-placeholder">
-                        <input type="text" required>
+                        <input type="text" class="email" oninput="removeErrorClass(email, emailError)" required>
                         <div class="placeholder">
                             Email address <span>*</span>
                         </div>
                     </div>
 
                     <div class="input-placeholder">
-                        <input type="text" required>
+                        <input type="text" class="phone" maxlength="9" oninput="removeErrorClass(phone, phoneError)"
+                            required
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
                         <div class="placeholder">
                             Phone number <span>*</span>
                         </div>
+
                     </div>
 
                     <div class="input-placeholder date-placeholder">
-                        <input type="date" class="date-input" required>
+                        <input type="date" class="date-input" oninput="removeErrorClass(date, dateError)" required>
                         <div class="placeholder">
                             Date of birth <span>*</span>
                         </div>

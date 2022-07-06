@@ -359,6 +359,85 @@ input[type=date]::-webkit-datetime-edit {
   background-color: #E9FAF1;
 }
 
+.errors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  width: 370px;
+  height: 420px;
+  top: 220px;
+  right: 29px;
+}
+
+.error {
+  display: none;
+  width: 350px;
+  margin: 5px auto;
+  padding: 7.2px 12px;
+  -webkit-box-shadow: 0px 3px 10px 2px rgba(185, 180, 195, 0.3);
+          box-shadow: 0px 3px 10px 2px rgba(185, 180, 195, 0.3);
+  border-radius: 4px;
+  z-index: 1;
+  background-color: white;
+}
+
+.error-up {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-bottom: 1px solid rgba(185, 180, 195, 0.3);
+  padding-bottom: 4px;
+  position: relative;
+}
+
+.error-up p {
+  color: #DC3545;
+  font-size: 14px;
+  font-weight: 600;
+  padding-left: 8px;
+}
+
+.error-up .x {
+  position: absolute;
+  top: 8px;
+  right: 1px;
+  cursor: pointer;
+}
+
+.error-down p {
+  font-size: 16px;
+  font-weight: 400;
+  padding: 10px 0;
+}
+
+.error-input {
+  display: block !important;
+  color: #DC3545;
+  background-color: #FFEFEF;
+}
+
+.success-input {
+  background: url("../img/Checkmark.svg");
+  background-repeat: no-repeat;
+  background-position-x: 735px;
+  background-position-y: 8px;
+}
+
 .personal-title {
   margin-left: 48.5px;
   margin-top: 115px;
