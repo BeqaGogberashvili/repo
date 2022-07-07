@@ -77,28 +77,33 @@ button {
 }
 
 .landing-bg {
-    background: url("../img/Landing\ page-\ scrolling\ photo.png");
+    background: url("../images/Landing\ page-\ scrolling\ photo.png");
 }
 
 .personal-bg {
-    background: url("../img/unsplash_27LH_0jXKYI.png");
+    background: url("../images/unsplash_27LH_0jXKYI.png");
 }
 
 .chess-bg {
-    background: url("../img/unsplash_27LH_0jXKYI2.png");
+    background: url("../images/unsplash_27LH_0jXKYI2.png");
 }
 
 .completed-bg {
-    background: url("../img/unsplash_27LH_0jXKYI3.png");
+    background: url("../images/unsplash_27LH_0jXKYI3.png");
 }
 
-
-input[type=date]:required:invalid::-webkit-datetime-edit,
-input[type=date]::-webkit-calendar-picker-indicator {
-    opacity: 0;
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
 }
 
-input[type=date]::-webkit-datetime-edit {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 20px;
+/* Track */
+::-webkit-scrollbar-track {
+    background: #E9ECEF;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #CBCFD2;
+    border-radius: 4px;
 }

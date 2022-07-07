@@ -11,6 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="./script/app.js" defer></script>
     <title>Redberry Knight Cup</title>
 </head>
@@ -25,7 +26,7 @@
 
             <div class="space-left">
                 <div class="landing-header">
-                    <img src="./img/Crown.svg">
+                    <img src="./images/Crown.svg">
                     <h1>Redberry Knight Cup</h1>
                 </div>
 
@@ -40,7 +41,7 @@
                 </div>
                 <div class="botton-line">
                     <h1 id="bottom-title-big">WHO WE ARE</h1>
-                    <button class="start next">Get Started<img src="./img/Arrow-right.svg"></button>
+                    <button class="start next">Get Started<img src="./images/Arrow-right.svg"></button>
                 </div>
             </div>
 
@@ -53,7 +54,7 @@
 
             <div class="space-left">
                 <div class="landing-header">
-                    <img src="./img/Crown.svg">
+                    <img src="./images/Crown.svg">
                     <h1>Redberry Knight Cup</h1>
                 </div>
 
@@ -92,9 +93,9 @@
 
                     <div class="error name-error">
                         <div class="error-up">
-                            <img src="./img/Alert.svg" alt="alert">
+                            <img src="./images/Alert.svg" alt="alert">
                             <p>Invalid name</p>
-                            <img src="./img/X.svg" class="x" alt="x">
+                            <img src="./images/X.svg" class="x" alt="x">
                         </div>
                         <div class="error-down">
                             <p class="name-error-text"></p>
@@ -103,9 +104,9 @@
 
                     <div class="error email-error">
                         <div class="error-up">
-                            <img src="./img/Alert.svg" alt="alert">
+                            <img src="./images/Alert.svg" alt="alert">
                             <p>Invalid email</p>
-                            <img src="./img/X.svg" class="x" alt="x">
+                            <img src="./images/X.svg" class="x" alt="x">
                         </div>
                         <div class="error-down">
                             <p>Please enter valid email address</p>
@@ -114,9 +115,9 @@
 
                     <div class="error phone-error">
                         <div class="error-up">
-                            <img src="./img/Alert.svg" alt="alert">
+                            <img src="./images/Alert.svg" alt="alert">
                             <p>Invalid phone</p>
-                            <img src="./img/X.svg" class="x" alt="x">
+                            <img src="./images/X.svg" class="x" alt="x">
                         </div>
                         <div class="error-down">
                             <p>Phone number must contain 9 characters</p>
@@ -125,9 +126,9 @@
 
                     <div class="error date-error">
                         <div class="error-up">
-                            <img src="./img/Alert.svg" alt="alert">
+                            <img src="./images/Alert.svg" alt="alert">
                             <p>Invalid date</p>
-                            <img src="./img/X.svg" class="x" alt="x">
+                            <img src="./images/X.svg" class="x" alt="x">
                         </div>
                         <div class="error-down">
                             <p>Date input can not be empty</p>
@@ -158,27 +159,25 @@
                     </div>
 
                     <div class="input-placeholder">
-                        <input type="text" class="phone" maxlength="9" oninput="removeErrorClass(phone, phoneError)"
-                            required
-                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                        <input type="text" class="phone" maxlength="9" required
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');removeErrorClass(phone, phoneError)" />
                         <div class="placeholder">
                             Phone number <span>*</span>
                         </div>
 
                     </div>
 
-                    <div class="input-placeholder date-placeholder">
-                        <input type="date" class="date-input" oninput="removeErrorClass(date, dateError)" required>
-                        <div class="placeholder">
-                            Date of birth <span>*</span>
-                        </div>
+                    <div class="input-placeholder">
+                        <input type="date" placeholder="Date of birth" class="date-input"
+                            oninput="removeErrorClass(date, dateError)" required>
+                        <span class="star">*</span>
                     </div>
 
                 </div>
 
                 <div class="navigation-buttons">
                     <button class="back">Back</button>
-                    <button class="next">Next<img src="./img/Arrow-right.svg"></button>
+                    <button class="next">Next<img src="./images/Arrow-right.svg"></button>
                 </div>
             </div>
         </div>
@@ -189,7 +188,7 @@
 
             <div class="space-left">
                 <div class="landing-header">
-                    <img src="./img/Crown.svg">
+                    <img src="./images/Crown.svg">
                     <h1>Redberry Knight Cup</h1>
                 </div>
 
@@ -211,7 +210,7 @@
                 <div class="progress">
                     <div class="progress-up">
                         <div class="square first-square-chess">
-                            <h1><img src="./img/Double-checkmark.svg" alt="Double-checkmark"></h1>
+                            <h1><img src="./images/Double-checkmark.svg" alt="Double-checkmark"></h1>
                         </div>
                         <div class="line"></div>
                         <div class="square second-square-chess">
@@ -239,17 +238,17 @@
                         <div class="current" tabindex="1">
 
                             <div class="box-value">
-                                <input class="box-input" type="radio" id="0" value="1" name="first-box"
+                                <input class="box-input" type="radio" id="first-0" value="1" name="first-box"
                                     checked="checked" />
                                 <p class="box-input-text">Beginner</p>
                             </div>
                             <div class="box-value">
-                                <input class="box-input" type="radio" id="1" value="2" name="first-box"
+                                <input class="box-input" type="radio" id="first-1" value="2" name="first-box"
                                     checked="checked" />
                                 <p class="box-input-text">Intermediate</p>
                             </div>
                             <div class="box-value">
-                                <input class="box-input" type="radio" id="2" value="3" name="first-box"
+                                <input class="box-input" type="radio" id="first-2" value="3" name="first-box"
                                     checked="checked" />
                                 <p class="box-input-text">Professional</p>
                             </div>
@@ -260,90 +259,44 @@
                                         *</span></p>
                             </div>
 
-                            <img class="box-icon" src="./img/Select-arrow.svg" alt="Arrow Icon" />
+                            <img class="box-icon" src="./images/Select-arrow.svg" alt="Arrow Icon" />
 
                         </div>
                         <ul class="box-list">
 
                             <li>
-                                <label class="box-option" for="0">Beginner</label>
+                                <label class="box-option" for="first-0">Beginner</label>
                             </li>
                             <li>
-                                <label class="box-option" for="1">Intermediate</label>
+                                <label class="box-option" for="first-1">Intermediate</label>
                             </li>
                             <li>
-                                <label class="box-option" for="2">Professional</label>
+                                <label class="box-option" for="first-2">Professional</label>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Second Select Box -->
 
-                    <div class="select-box second-box">
-                        <div class="current" tabindex="1">
+                    <div class="select-box second-box"></div>
 
-                            <div class="box-value">
-                                <input class="box-input" type="radio" id="3" value="1" name="second-box"
-                                    checked="checked" />
-                                <p class="box-input-text">Magnus Carlsen</p>
-                            </div>
-                            <div class="box-value">
-                                <input class="box-input" type="radio" id="4" value="2" name="second-box"
-                                    checked="checked" />
-                                <p class="box-input-text">Wilhelm Steinitz</p>
-                            </div>
-                            <div class="box-value">
-                                <input class="box-input" type="radio" id="5" value="3" name="second-box"
-                                    checked="checked" />
-                                <p class="box-input-text">Bobby Fischer</p>
-                            </div>
-                            <div class="box-value">
-                                <input class="box-input" type="radio" id="6" value="3" name="second-box"
-                                    checked="checked" />
-                                <p class="box-input-text">Bobby Fischer</p>
-                            </div>
-
-                            <div class="box-value">
-                                <input class="box-input" type="radio" name="second-box" checked="checked" />
-                                <p class="box-input-text">Choose your character<span class="star">
-                                        *</span></p>
-                            </div>
-
-                            <img class="box-icon" src="./img/Select-arrow.svg" alt="Arrow Icon" />
-
-                        </div>
-                        <ul class="box-list">
-
-                            <li>
-                                <label class="box-option" for="3">Magnus Carlsen</label>
-                            </li>
-                            <li>
-                                <label class="box-option" for="4">Wilhelm Steinitz</label>
-                            </li>
-                            <li>
-                                <label class="box-option" for="5">Bobby Fischer</label>
-                            </li>
-                            <li>
-                                <label class="box-option" for="6">Bobby Fischer</label>
-                            </li>
-                        </ul>
-                    </div>
+                    <!-- Radio Option -->
 
                     <div class="participated-radio">
                         <h1>Have you participated in the Redberry Championship?<span class="star">*</span></h1>
 
                         <div class="participated-radio-options">
-                            <input type="radio" id="yes" name="fav_language" value="HTML">
+                            <input type="radio" id="yes" name="participated-question">
                             <label for="yes">Yes</label>
-                            <input type="radio" id="no" name="fav_language" value="HTML">
+                            <input type="radio" id="no" name="participated-question">
                             <label for="no">No</label>
                         </div>
                     </div>
 
                 </div>
-                <div class="navigation-buttons">
+                <div class="navigation-buttons chess-buttons">
                     <button class="back">Back</button>
-                    <button class="next">Next<img src="./img/Arrow-right.svg"></button>
+                    <button class="next">Next<img src="./images/Arrow-right.svg"></button>
                 </div>
             </div>
 
@@ -355,7 +308,7 @@
 
             <div class="space-left">
                 <div class="landing-header">
-                    <img src="./img/Crown.svg">
+                    <img src="./images/Crown.svg">
                     <h1>Redberry Knight Cup</h1>
                 </div>
 
@@ -364,13 +317,14 @@
             </div>
 
             <div class="space-right">
-                <img src="./img/Onboarding completed!.png" alt="">
+                <img src="./images/Onboarding completed!.png" alt="">
             </div>
 
         </div>
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 </body>
 

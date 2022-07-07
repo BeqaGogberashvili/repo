@@ -1,3 +1,5 @@
+// Variables
+
 const steps = document.querySelectorAll(".step")
 const nextButtons = document.querySelectorAll(".next")
 const backButtons = document.querySelectorAll(".back")
@@ -15,22 +17,17 @@ const phoneError = document.querySelector(".phone-error")
 const dateError = document.querySelector(".date-error")
 
 const progress = document.querySelector(".first-square-personal-inside")
+const secondBox = document.querySelector(".second-box")
 
 const x = document.querySelectorAll(".x")
-
-
-x.forEach(element => {
-    element.addEventListener("click", (e) => {
-        e.target.parentElement.parentElement.style.display = "none"
-    })
-});
-
-
 
 let currentStep = 0;
 displayCurrentStep(currentStep);
 
 
+// Functions
+
+// Display
 function displayCurrentStep(currentStep) {
     steps.forEach(step => {
         step.style.display = "none"
@@ -38,18 +35,18 @@ function displayCurrentStep(currentStep) {
     steps[currentStep].style.display = "block"
 }
 
-
+// Next button
 nextButtons.forEach((button, index) => {
     button.addEventListener('click', (e) => {
         e.preventDefault()
 
         switch (index) {
 
-            case 0:
+            case 0: // Landing Page
                 currentStep++
                 break;
 
-            case 1:
+            case 1: // Personal Information page
 
                 // Name
                 if (nameInput.value.length > 2) {
@@ -66,7 +63,7 @@ nextButtons.forEach((button, index) => {
                 }
 
                 // Email
-                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
+                if (email.value.split('@')[1] === 'redberry.ge') {
                     emailError.style.display = "none"
                     email.classList.add("success-input")
                 } else {
@@ -93,10 +90,8 @@ nextButtons.forEach((button, index) => {
                 }
 
 
-
-
                 // If errors are hidden, inputs are valid
-                let valid
+                let valid = true;
                 let errorCounter = 0;
                 errors.forEach(error => {
                     if (error.style.display == "block") {
@@ -115,7 +110,7 @@ nextButtons.forEach((button, index) => {
                 }
                 break;
 
-            case 2:
+            case 2: // Chess Experience Page
                 currentStep++
                 break;
         }
@@ -124,6 +119,7 @@ nextButtons.forEach((button, index) => {
     })
 })
 
+// Back button
 backButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         e.preventDefault();
@@ -137,8 +133,94 @@ backButtons.forEach(button => {
     })
 })
 
+// Remove error styling oninput
 function removeErrorClass(element, elementError) {
     element.classList.remove("error-input")
     element.classList.remove("success-input")
     elementError.style.display = "none"
 }
+
+// Popup X button
+x.forEach(element => {
+    element.addEventListener("click", (e) => {
+        e.target.parentElement.parentElement.style.display = "none"
+    })
+});
+
+// Custom date picker
+flatpickr(".date-input", {});
+
+// Getting data from API & Generating select
+
+const current = document.createElement("div")
+current.classList.add("current")
+current.setAttribute("tabindex", "1")
+
+const boxList = document.createElement("ul")
+boxList.classList.add("box-list", "box-list-second")
+
+fetch("https://chess-tournament-api.devtest.ge/api/grandmasters")
+    .then(result => result.json())
+    .then(data => {
+        data.forEach((record, index) => {
+
+            const boxValue = document.createElement("div")
+            boxValue.classList.add("box-value")
+
+            const boxInput = document.createElement("input")
+            boxInput.classList.add("box-input")
+            boxInput.setAttribute("type", "radio")
+            boxInput.setAttribute("id", index)
+            boxInput.setAttribute("name", "second-box")
+            boxInput.setAttribute("checked", "checked")
+
+            const boxInputText = document.createElement("p")
+            boxInputText.classList.add("box-input-text")
+            boxInputText.innerHTML = record.name
+
+            // Total
+            if (index === 0) {
+                const totalLi = document.createElement("li")
+                const totalLiText = document.createElement("h5")
+                totalLiText.innerText = `(Total ` + data.length + `)`
+                totalLi.appendChild(totalLiText)
+                boxList.appendChild(totalLi)
+            }
+
+            const boxOptionLi = document.createElement("li")
+            const boxOption = document.createElement("label")
+            boxOption.classList.add("box-option", "second-box-option")
+            boxOption.setAttribute("for", index)
+            boxOption.innerHTML = record.name + `<img
+            src="`+ record.image + `">`
+
+            boxOptionLi.appendChild(boxOption)
+            boxList.appendChild(boxOptionLi)
+
+            boxValue.appendChild(boxInput)
+            boxValue.appendChild(boxInputText)
+
+            current.appendChild(boxValue)
+            // Adding placeholder
+            if (index + 1 === data.length) {
+                const chooseYourCharacter = document.createElement("div")
+                chooseYourCharacter.innerHTML = `<div class="box-value">
+<input class="box-input" type="radio" name="second-box" checked="checked" />
+<p class="box-input-text">Choose your character<span class="star">
+        *</span></p>
+</div>`
+                current.appendChild(chooseYourCharacter)
+            }
+        })
+    })
+
+const arrow = document.createElement("img")
+arrow.setAttribute("src", "./images/Select-arrow.svg")
+arrow.classList.add("box-icon")
+
+current.appendChild(arrow)
+
+secondBox.appendChild(current)
+secondBox.appendChild(boxList)
+
+

@@ -150,7 +150,7 @@
 }
 
 .success-input {
-    background: url("../img/Checkmark.svg");
+    background: url("../images/Checkmark.svg");
     background-repeat: no-repeat;
     background-position-x: 735px;
     background-position-y: 8px;
@@ -186,15 +186,17 @@ p::after {
 
     .input-placeholder {
         position: relative;
+
+        .star {
+            position: absolute;
+            top: 31px;
+            left: 128px;
+        }
     }
 
     .input-placeholder input {
         width: 775px;
         padding: 8px 16px;
-    }
-
-    .date-placeholder input {
-        padding: 5px 16px;
     }
 
     .input-placeholder input:valid+.placeholder {
@@ -208,8 +210,7 @@ p::after {
         top: 28px;
         left: 16px;
         bottom: 2px;
-        margin: auto;
-        color: black;
+        color: $black;
     }
 
     .placeholder span {
@@ -219,19 +220,13 @@ p::after {
 
 }
 
+.date-input::placeholder {
+    opacity: 1;
+    color: $black;
+}
+
 .navigation-buttons {
     @include flex(center, row);
     margin-left: 48px;
     margin-top: 63px;
-}
-
-.date-input::-webkit-calendar-picker-indicator {
-    position: absolute;
-    left: 0;
-    top: 22px;
-    width: 772px;
-    height: 45px;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
 }
