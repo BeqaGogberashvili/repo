@@ -238,23 +238,24 @@
                         <div class="current" tabindex="1">
 
                             <div class="box-value">
-                                <input class="box-input" type="radio" id="first-0" value="1" name="first-box"
-                                    checked="checked" />
+                                <input class="box-input box-input-first" type="radio" id="first-0" value="1"
+                                    name="first-box" checked="checked" />
                                 <p class="box-input-text">Beginner</p>
                             </div>
                             <div class="box-value">
-                                <input class="box-input" type="radio" id="first-1" value="2" name="first-box"
-                                    checked="checked" />
+                                <input class="box-input box-input-first" type="radio" id="first-1" value="2"
+                                    name="first-box" checked="checked" />
                                 <p class="box-input-text">Intermediate</p>
                             </div>
                             <div class="box-value">
-                                <input class="box-input" type="radio" id="first-2" value="3" name="first-box"
-                                    checked="checked" />
+                                <input class="box-input box-input-first" type="radio" id="first-2" value="3"
+                                    name="first-box" checked="checked" />
                                 <p class="box-input-text">Professional</p>
                             </div>
 
                             <div class="box-value">
-                                <input class="box-input" type="radio" name="first-box" checked="checked" />
+                                <input class="box-input box-input-first" type="radio" name="first-box"
+                                    checked="checked" />
                                 <p class="box-input-text">level of knowledge<span class="star">
                                         *</span></p>
                             </div>
@@ -286,18 +287,36 @@
                         <h1>Have you participated in the Redberry Championship?<span class="star">*</span></h1>
 
                         <div class="participated-radio-options">
-                            <input type="radio" id="yes" name="participated-question">
+                            <input type="radio" id="yes" name="participated-question" class="participated-question">
                             <label for="yes">Yes</label>
-                            <input type="radio" id="no" name="participated-question">
+                            <input type="radio" id="no" name="participated-question" class="participated-question">
                             <label for="no">No</label>
                         </div>
                     </div>
 
                 </div>
+
+                <!-- Errors -->
+
+                <div class="errors chess-errors">
+                    <div class="error box-input-first-error">
+                        <div class="error-up">
+                            <img src="./images/Alert.svg" alt="alert">
+                            <p>Empty</p>
+                            <img src="./images/X.svg" class="x" alt="x">
+                        </div>
+                        <div class="error-down">
+                            <p class="name-error-text">Please fill all of the required fields</p>
+                        </div>
+                    </div>
+
+                </div>
+
                 <div class="navigation-buttons chess-buttons">
                     <button class="back">Back</button>
                     <button class="next">Next<img src="./images/Arrow-right.svg"></button>
                 </div>
+
             </div>
 
         </div>
@@ -329,3 +348,5 @@
 </body>
 
 </html>
+
+<img src="./images/magnus.jpg">

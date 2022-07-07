@@ -21,9 +21,8 @@ const secondBox = document.querySelector(".second-box")
 
 const x = document.querySelectorAll(".x")
 
-let currentStep = 0;
-displayCurrentStep(currentStep);
-
+let currentStep = 0
+displayCurrentStep(currentStep)
 
 // Functions
 
@@ -111,7 +110,18 @@ nextButtons.forEach((button, index) => {
                 break;
 
             case 2: // Chess Experience Page
-                currentStep++
+
+                const boxInputFirst = document.querySelectorAll(".box-input-first")
+                const boxInputFirstError = document.querySelector(".box-input-first-error")
+                const boxInputSecond = document.querySelectorAll(".box-input-first")
+                const participated = document.querySelectorAll(".participated-question")
+
+                if (boxInputFirst[boxInputFirst.length - 1].checked || boxInputSecond[boxInputSecond.length - 1].checked || (participated[0].checked === false && participated[1].checked === false)) {
+                    boxInputFirstError.style.display = "block"
+                } else {
+                    boxInputFirstError.style.display = "none"
+                    current++
+                }
                 break;
         }
 
@@ -163,12 +173,11 @@ fetch("https://chess-tournament-api.devtest.ge/api/grandmasters")
     .then(result => result.json())
     .then(data => {
         data.forEach((record, index) => {
-
             const boxValue = document.createElement("div")
             boxValue.classList.add("box-value")
 
             const boxInput = document.createElement("input")
-            boxInput.classList.add("box-input")
+            boxInput.classList.add("box-input", "box-input-second")
             boxInput.setAttribute("type", "radio")
             boxInput.setAttribute("id", index)
             boxInput.setAttribute("name", "second-box")
@@ -205,7 +214,7 @@ fetch("https://chess-tournament-api.devtest.ge/api/grandmasters")
             if (index + 1 === data.length) {
                 const chooseYourCharacter = document.createElement("div")
                 chooseYourCharacter.innerHTML = `<div class="box-value">
-<input class="box-input" type="radio" name="second-box" checked="checked" />
+<input class="box-input box-input-second" type="radio" name="second-box" checked="checked" />
 <p class="box-input-text">Choose your character<span class="star">
         *</span></p>
 </div>`
