@@ -192,7 +192,7 @@ fetch("https://chess-tournament-api.devtest.ge/api/grandmasters")
             boxOption.classList.add("box-option", "second-box-option")
             boxOption.setAttribute("for", index)
             boxOption.innerHTML = record.name + `<img
-            src="`+ record.image + `">`
+            src=".`+ record.image + `">`
 
             boxOptionLi.appendChild(boxOption)
             boxList.appendChild(boxOptionLi)
