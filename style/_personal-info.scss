@@ -149,12 +149,7 @@
     background-color: $light-red;
 }
 
-.success-input {
-    background: url("../images/Checkmark.svg");
-    background-repeat: no-repeat;
-    background-position-x: 735px;
-    background-position-y: 8px;
-}
+
 
 .personal-title {
     margin-left: 48.5px;
@@ -191,6 +186,13 @@ p::after {
             position: absolute;
             top: 31px;
             left: 128px;
+        }
+
+        .success-input {
+            display: none;
+            position: absolute;
+            right: 193px;
+            top: 32px;
         }
     }
 

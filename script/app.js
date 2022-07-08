@@ -16,14 +16,16 @@ const emailError = document.querySelector(".email-error")
 const phoneError = document.querySelector(".phone-error")
 const dateError = document.querySelector(".date-error")
 const chessExperienceError = document.querySelector(".chess-experience-error")
+const successInput = document.querySelectorAll(".success-input")
+const dateStar = document.querySelector(".date-star")
 
-const progress = document.querySelector(".first-square-personal-inside")
+const progressPersonal = document.querySelector(".first-square-personal-inside")
 const secondBox = document.querySelector(".second-box")
 const secondSquare = document.querySelector(".second-square-chess")
 
 const x = document.querySelectorAll(".x")
 
-let currentStep = 2
+let currentStep = 1
 displayCurrentStep(currentStep)
 
 // Functions
@@ -52,7 +54,6 @@ nextButtons.forEach((button, index) => {
                 // Name
                 if (nameInput.value.length > 2) {
                     nameError.style.display = "none"
-                    nameInput.classList.add("success-input")
                 } else {
                     nameError.style.display = "block"
                     nameInput.classList.add("error-input")
@@ -66,7 +67,6 @@ nextButtons.forEach((button, index) => {
                 // Email
                 if (email.value.split('@')[1] === 'redberry.ge') {
                     emailError.style.display = "none"
-                    email.classList.add("success-input")
                 } else {
                     emailError.style.display = "block"
                     email.classList.add("error-input")
@@ -75,7 +75,6 @@ nextButtons.forEach((button, index) => {
                 // Phone
                 if (phone.value.length === 9) {
                     phoneError.style.display = "none"
-                    phone.classList.add("success-input")
                 } else {
                     phoneError.style.display = "block"
                     phone.classList.add("error-input")
@@ -84,12 +83,10 @@ nextButtons.forEach((button, index) => {
                 // Date
                 if (date.value !== "") {
                     dateError.style.display = "none"
-                    date.classList.add("success-input")
                 } else {
                     dateError.style.display = "block"
                     date.classList.add("error-input")
                 }
-
 
                 // If errors are hidden, inputs are valid
                 let valid = true;
@@ -100,9 +97,9 @@ nextButtons.forEach((button, index) => {
                         errorCounter++
                     }
                     if (errorCounter < 4) {
-                        progress.style.backgroundColor = "#E9FAF1"
+                        progressPersonal.style.backgroundColor = "#E9FAF1"
                     } else {
-                        progress.style.backgroundColor = "white"
+                        progressPersonal.style.backgroundColor = "white"
                     }
                 })
 
@@ -128,7 +125,26 @@ nextButtons.forEach((button, index) => {
                     chessExperienceError.style.display = "block"
                 } else { // Otherwise submit form
                     chessExperienceError.style.display = "none"
-                    currentStep++
+
+                    // API Submit
+                    const data = {
+                        "name": "Beth Harmon",
+                        "email": "beth@redberry.ge",
+                        "phone": "598125819",
+                        "date_of_birth": "10/20/1997",
+                        "experience_level": "beginner",
+                        "already_participated": true,
+                        "character_id": 2
+                    }
+
+                    // fetch("https://chess-tournament-api.devtest.ge/api/register", {
+                    //     method: 'POST',
+                    //     headers: {
+                    //         'Content-Type': 'application/json'
+                    //     },
+                    //     body: JSON.stringify(data)
+                    // })
+                    // currentStep++
                 }
 
                 // Light progress bar green
@@ -159,12 +175,7 @@ backButtons.forEach(button => {
     })
 })
 
-// Remove error styling oninput
-function removeErrorClass(element, elementError) {
-    element.classList.remove("error-input")
-    element.classList.remove("success-input")
-    elementError.style.display = "none"
-}
+
 
 // Popup X button
 x.forEach(element => {
@@ -247,5 +258,94 @@ current.appendChild(arrow)
 
 secondBox.appendChild(current)
 secondBox.appendChild(boxList)
+
+
+// Oninput Validation
+
+function validation(input) {
+
+    switch (input.name) {
+
+        case "name":
+            setLocal(input, 0, input.value.length > 2)
+            break;
+
+        case "email":
+            setLocal(input, 1, input.value.split('@')[1] === 'redberry.ge')
+            break;
+
+        case "phone":
+            setLocal(input, 2, phone.value.length === 9)
+            break;
+    }
+
+}
+
+function setLocal(input, index, condition,) {
+    if (condition) {
+        successInput[index].style.display = "block"
+        progressPersonal.style.backgroundColor = "#E9FAF1"
+    } else {
+        successInput[index].style.display = "none"
+    }
+
+
+    getDataFromLocal(input.name, input.value)
+
+    input.classList.remove("error-input")
+}
+
+// Date input needs special treatment since it's not default date type
+date.addEventListener('change', () => {
+    if (date.value !== "") {
+        date.value = convertDateToDefault(date.value)
+
+        getDataFromLocal("date_of_birth", date.value)
+
+        dateStar.style.display = "none"
+        successInput[3].style.display = "block"
+        progressPersonal.style.backgroundColor = "#E9FAF1"
+    }
+})
+
+
+// Get object from localStorage
+function getDataFromLocal(key, value) {
+    const data = JSON.parse(localStorage.getItem("data"))
+    data[key] = value
+    localStorage.setItem("data", JSON.stringify(data))
+}
+
+
+// Converting date to match API
+function convertDateToDefault(date) {
+    return date.slice(5, 7) + '/' + date.slice(8) + '/' + date.slice(0, 4)
+}
+
+// Create empty object in localStorage or parse data from already created one
+if (localStorage.getItem("data") === null) {
+    const data = {
+        "name": "",
+        "email": "",
+        "phone": "",
+        "date_of_birth": ""
+        // ,
+        // "experience_level": "beginner",
+        // "already_participated": true,
+        // "character_id": 2
+    }
+    localStorage.setItem("data", JSON.stringify(data))
+} else {
+    const data = JSON.parse(localStorage.getItem("data"))
+    nameInput.value = data.name
+    email.value = data.email
+    phone.value = data.phone
+    date.value = data.date_of_birth
+    if (date.value !== "") {
+        dateStar.style.display = "none"
+    }
+}
+
+
 
 

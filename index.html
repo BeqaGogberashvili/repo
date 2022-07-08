@@ -145,32 +145,34 @@
                 <div class="personal-inputs">
 
                     <div class="input-placeholder">
-                        <input type="text" class="name" oninput="removeErrorClass(nameInput, nameError)" required>
+                        <input type="text" name="name" class="name" oninput="validation(this)" required>
                         <div class="placeholder">
                             Name <span>*</span>
                         </div>
+                        <img src="./images/Checkmark.svg" class="success-input">
                     </div>
 
                     <div class="input-placeholder">
-                        <input type="text" class="email" oninput="removeErrorClass(email, emailError)" required>
+                        <input type="text" name="email" class="email" oninput="validation(this)" required>
                         <div class="placeholder">
                             Email address <span>*</span>
                         </div>
+                        <img src="./images/Checkmark.svg" class="success-input">
                     </div>
 
                     <div class="input-placeholder">
-                        <input type="text" class="phone" maxlength="9" required
-                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');removeErrorClass(phone, phoneError)" />
+                        <input type="text" name="phone" class="phone" maxlength="9" required
+                            oninput="validation(this);this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" />
                         <div class="placeholder">
                             Phone number <span>*</span>
                         </div>
-
+                        <img src="./images/Checkmark.svg" class="success-input">
                     </div>
 
                     <div class="input-placeholder">
-                        <input type="date" placeholder="Date of birth" class="date-input"
-                            oninput="removeErrorClass(date, dateError)" required>
-                        <span class="star">*</span>
+                        <input type="date" placeholder="Date of birth" name="date_of_birth" class="date-input" required>
+                        <span class="star date-star">*</span>
+                        <img src="./images/Checkmark.svg" class="success-input">
                     </div>
 
                 </div>
