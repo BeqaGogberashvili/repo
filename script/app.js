@@ -15,13 +15,15 @@ const nameErrorText = document.querySelector(".name-error-text")
 const emailError = document.querySelector(".email-error")
 const phoneError = document.querySelector(".phone-error")
 const dateError = document.querySelector(".date-error")
+const chessExperienceError = document.querySelector(".chess-experience-error")
 
 const progress = document.querySelector(".first-square-personal-inside")
 const secondBox = document.querySelector(".second-box")
+const secondSquare = document.querySelector(".second-square-chess")
 
 const x = document.querySelectorAll(".x")
 
-let currentStep = 0
+let currentStep = 2
 displayCurrentStep(currentStep)
 
 // Functions
@@ -105,29 +107,43 @@ nextButtons.forEach((button, index) => {
                 })
 
                 if (valid === true) {
-                    currentStep++;
+                    currentStep++
                 }
                 break;
 
             case 2: // Chess Experience Page
 
                 const boxInputFirst = document.querySelectorAll(".box-input-first")
-                const boxInputFirstError = document.querySelector(".box-input-first-error")
-                const boxInputSecond = document.querySelectorAll(".box-input-first")
-                const participated = document.querySelectorAll(".participated-question")
+                const boxInputSecond = document.querySelectorAll(".box-input-second")
+                const participatedQuestion = document.querySelectorAll(".participated-question")
 
-                if (boxInputFirst[boxInputFirst.length - 1].checked || boxInputSecond[boxInputSecond.length - 1].checked || (participated[0].checked === false && participated[1].checked === false)) {
-                    boxInputFirstError.style.display = "block"
-                } else {
-                    boxInputFirstError.style.display = "none"
-                    current++
+                // Since custom select actualy has radios in it, it's last value serves as placeholder. 
+                // First 2 variables look if the last radio is checked, which means user didn't choose option.
+                const knowledge = boxInputFirst[boxInputFirst.length - 1].checked
+                const character = boxInputSecond[boxInputSecond.length - 1].checked
+                const participated = (participatedQuestion[0].checked === false && participatedQuestion[1].checked === false)
+
+                // If ture (User left them unchecked) display error
+                if (knowledge || character || participated) {
+                    chessExperienceError.style.display = "block"
+                } else { // Otherwise submit form
+                    chessExperienceError.style.display = "none"
+                    currentStep++
                 }
+
+                // Light progress bar green
+                // If any of them are false (Some have been checked) give Chess Experience progress bar green background
+                if (!knowledge || !character || !participated) {
+                    secondSquare.style.backgroundColor = "#E9FAF1";
+                }
+
                 break;
         }
 
         displayCurrentStep(currentStep)
     })
 })
+
 
 // Back button
 backButtons.forEach(button => {
