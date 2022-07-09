@@ -767,8 +767,12 @@ p::after {
 
 .box-option img {
   position: absolute;
+  width: 100px;
+  height: 72px;
   right: 10px;
   border-radius: 4px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .second-box-option {

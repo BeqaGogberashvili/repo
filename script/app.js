@@ -3,13 +3,12 @@
 const steps = document.querySelectorAll(".step")
 const nextButtons = document.querySelectorAll(".next")
 const backButtons = document.querySelectorAll(".back")
-
 const errors = document.querySelectorAll(".error");
 const nameInput = document.querySelector(".name")
 const email = document.querySelector(".email")
 const phone = document.querySelector(".phone")
 const date = document.querySelector(".date-input")
-
+const x = document.querySelectorAll(".x")
 const nameError = document.querySelector(".name-error")
 const nameErrorText = document.querySelector(".name-error-text")
 const emailError = document.querySelector(".email-error")
@@ -18,14 +17,20 @@ const dateError = document.querySelector(".date-error")
 const chessExperienceError = document.querySelector(".chess-experience-error")
 const successInput = document.querySelectorAll(".success-input")
 const dateStar = document.querySelector(".date-star")
-
 const progressPersonal = document.querySelector(".first-square-personal-inside")
+const progressChess = document.querySelector(".second-square-personal-inside")
+const participatedQuestion = document.querySelectorAll(".participated-question")
 const secondBox = document.querySelector(".second-box")
 const secondSquare = document.querySelector(".second-square-chess")
+const boxInputFirst = document.querySelectorAll(".box-input-first")
+let boxInputSecond; // 'Choose your character selector' is generated from API and creating variable requires delay
+setTimeout(createBoxInputSecond, 150)
+function createBoxInputSecond() {
+    boxInputSecond = document.querySelectorAll(".box-input-second")
+}
 
-const x = document.querySelectorAll(".x")
 
-let currentStep = 1
+let currentStep = 0
 displayCurrentStep(currentStep)
 
 // Functions
@@ -38,11 +43,12 @@ function displayCurrentStep(currentStep) {
     steps[currentStep].style.display = "block"
 }
 
+
 // Next button
 nextButtons.forEach((button, index) => {
     button.addEventListener('click', (e) => {
         e.preventDefault()
-
+        const data = JSON.parse(localStorage.getItem("data"))
         switch (index) {
 
             case 0: // Landing Page
@@ -50,107 +56,72 @@ nextButtons.forEach((button, index) => {
                 break;
 
             case 1: // Personal Information page
+                //Validating
 
                 // Name
-                if (nameInput.value.length > 2) {
+                if (data.name.length > 2) {
                     nameError.style.display = "none"
                 } else {
                     nameError.style.display = "block"
                     nameInput.classList.add("error-input")
-                    if (nameInput.value == "") {
+                    if (data.name == "") {
                         nameErrorText.innerText = "Name can not be empty"
                     } else {
                         nameErrorText.innerText = "Name must have more than 2 characters"
                     }
                 }
-
                 // Email
-                if (email.value.split('@')[1] === 'redberry.ge') {
+                if (data.email.split('@')[1] === 'redberry.ge') {
                     emailError.style.display = "none"
                 } else {
                     emailError.style.display = "block"
                     email.classList.add("error-input")
                 }
-
                 // Phone
-                if (phone.value.length === 9) {
+                if (data.phone.length === 9) {
                     phoneError.style.display = "none"
                 } else {
                     phoneError.style.display = "block"
                     phone.classList.add("error-input")
                 }
-
                 // Date
-                if (date.value !== "") {
+                if (data.date_of_birth !== "") {
                     dateError.style.display = "none"
                 } else {
                     dateError.style.display = "block"
                     date.classList.add("error-input")
                 }
-
                 // If errors are hidden, inputs are valid
                 let valid = true;
-                let errorCounter = 0;
                 errors.forEach(error => {
                     if (error.style.display == "block") {
                         valid = false;
-                        errorCounter++
-                    }
-                    if (errorCounter < 4) {
-                        progressPersonal.style.backgroundColor = "#E9FAF1"
-                    } else {
-                        progressPersonal.style.backgroundColor = "white"
                     }
                 })
-
-                if (valid === true) {
+                if (valid) {
                     currentStep++
                 }
                 break;
 
             case 2: // Chess Experience Page
 
-                const boxInputFirst = document.querySelectorAll(".box-input-first")
-                const boxInputSecond = document.querySelectorAll(".box-input-second")
-                const participatedQuestion = document.querySelectorAll(".participated-question")
+                if (data.experience_level !== "" && data.already_participated !== "" & data.character_id !== "") {
 
-                // Since custom select actualy has radios in it, it's last value serves as placeholder. 
-                // First 2 variables look if the last radio is checked, which means user didn't choose option.
-                const knowledge = boxInputFirst[boxInputFirst.length - 1].checked
-                const character = boxInputSecond[boxInputSecond.length - 1].checked
-                const participated = (participatedQuestion[0].checked === false && participatedQuestion[1].checked === false)
-
-                // If ture (User left them unchecked) display error
-                if (knowledge || character || participated) {
-                    chessExperienceError.style.display = "block"
-                } else { // Otherwise submit form
-                    chessExperienceError.style.display = "none"
-
-                    // API Submit
-                    const data = {
-                        "name": "Beth Harmon",
-                        "email": "beth@redberry.ge",
-                        "phone": "598125819",
-                        "date_of_birth": "10/20/1997",
-                        "experience_level": "beginner",
-                        "already_participated": true,
-                        "character_id": 2
+                    data.character_id = parseInt(data.character_id)
+                    if (data.already_participated === "true") {
+                        data.already_participated = true
+                    } else {
+                        data.already_participated = false
                     }
 
-                    // fetch("https://chess-tournament-api.devtest.ge/api/register", {
-                    //     method: 'POST',
-                    //     headers: {
-                    //         'Content-Type': 'application/json'
-                    //     },
-                    //     body: JSON.stringify(data)
-                    // })
-                    // currentStep++
-                }
-
-                // Light progress bar green
-                // If any of them are false (Some have been checked) give Chess Experience progress bar green background
-                if (!knowledge || !character || !participated) {
-                    secondSquare.style.backgroundColor = "#E9FAF1";
+                    fetch("https://chess-tournament-api.devtest.ge/api/register", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    currentStep++
                 }
 
                 break;
@@ -208,6 +179,7 @@ fetch("https://chess-tournament-api.devtest.ge/api/grandmasters")
             boxInput.setAttribute("type", "radio")
             boxInput.setAttribute("id", index)
             boxInput.setAttribute("name", "second-box")
+            boxInput.setAttribute("value", index + 1)
             boxInput.setAttribute("checked", "checked")
 
             const boxInputText = document.createElement("p")
@@ -227,8 +199,9 @@ fetch("https://chess-tournament-api.devtest.ge/api/grandmasters")
             const boxOption = document.createElement("label")
             boxOption.classList.add("box-option", "second-box-option")
             boxOption.setAttribute("for", index)
+            boxOption.setAttribute("value", index)
             boxOption.innerHTML = record.name + `<img
-            src=".`+ record.image + `">`
+            src="https://chess-tournament-api.devtest.ge/`+ record.image + `">`
 
             boxOptionLi.appendChild(boxOption)
             boxList.appendChild(boxOptionLi)
@@ -281,17 +254,16 @@ function validation(input) {
 
 }
 
+
 function setLocal(input, index, condition,) {
     if (condition) {
         successInput[index].style.display = "block"
         progressPersonal.style.backgroundColor = "#E9FAF1"
+
     } else {
         successInput[index].style.display = "none"
     }
-
-
-    getDataFromLocal(input.name, input.value)
-
+    updateDataLocaly(input.name, input.value)
     input.classList.remove("error-input")
 }
 
@@ -300,7 +272,7 @@ date.addEventListener('change', () => {
     if (date.value !== "") {
         date.value = convertDateToDefault(date.value)
 
-        getDataFromLocal("date_of_birth", date.value)
+        updateDataLocaly("date_of_birth", date.value)
 
         dateStar.style.display = "none"
         successInput[3].style.display = "block"
@@ -309,18 +281,14 @@ date.addEventListener('change', () => {
 })
 
 
-// Get object from localStorage
-function getDataFromLocal(key, value) {
-    const data = JSON.parse(localStorage.getItem("data"))
-    data[key] = value
-    localStorage.setItem("data", JSON.stringify(data))
-}
-
 
 // Converting date to match API
 function convertDateToDefault(date) {
     return date.slice(5, 7) + '/' + date.slice(8) + '/' + date.slice(0, 4)
 }
+
+
+// On Page Load
 
 // Create empty object in localStorage or parse data from already created one
 if (localStorage.getItem("data") === null) {
@@ -328,24 +296,76 @@ if (localStorage.getItem("data") === null) {
         "name": "",
         "email": "",
         "phone": "",
-        "date_of_birth": ""
-        // ,
-        // "experience_level": "beginner",
-        // "already_participated": true,
-        // "character_id": 2
+        "date_of_birth": "",
+        "experience_level": "",
+        "already_participated": "",
+        "character_id": ""
     }
     localStorage.setItem("data", JSON.stringify(data))
-} else {
-    const data = JSON.parse(localStorage.getItem("data"))
-    nameInput.value = data.name
-    email.value = data.email
-    phone.value = data.phone
-    date.value = data.date_of_birth
-    if (date.value !== "") {
-        dateStar.style.display = "none"
+}
+
+const data = JSON.parse(localStorage.getItem("data"))
+//      Personal Information
+nameInput.value = data.name
+email.value = data.email
+phone.value = data.phone
+date.value = data.date_of_birth
+
+const validArray = [nameInput.value.length > 2, email.value.split('@')[1] === 'redberry.ge', phone.value.length === 9, date.value !== ""]
+
+for (let i = 0; i < 4; i++) {
+    if (validArray[i]) {
+        progressPersonal.style.backgroundColor = "#E9FAF1"
+        successInput[i].style.display = "block"
     }
 }
 
+if (date.value !== "") {
+    dateStar.style.display = "none"
+}
+
+//      Chess Experience
+
+// Level of knowledge
+boxInputFirst.forEach(element => {
+    element.addEventListener('change', () => {
+        updateDataLocaly("experience_level", element.value)
+    })
+    if (element.value == data.experience_level) {
+        element.checked = true;
+        progressChess.style.backgroundColor = "#E9FAF1"
+    }
+})
+// Choose your character
+setTimeout(boxInputSecondDelay, 150)
+function boxInputSecondDelay() {
+    boxInputSecond.forEach(element => {
+        element.addEventListener('change', () => {
+            updateDataLocaly("character_id", element.value)
+        })
+        if (element.value == data.character_id) {
+            element.checked = true;
+            progressChess.style.backgroundColor = "#E9FAF1"
+        }
+    });
+}
+// Participated question
+participatedQuestion.forEach(element => {
+    element.addEventListener('change', () => {
+        updateDataLocaly("already_participated", element.value)
+    })
+})
+if (data.already_participated === "true") {
+    document.querySelector(".answer-yes").checked = true
+}
+if (data.already_participated === "false") {
+    document.querySelector(".answer-no").checked = true
+}
 
 
-
+// Make changes in localStorage object
+function updateDataLocaly(key, value) {
+    const data = JSON.parse(localStorage.getItem("data"))
+    data[key] = value
+    localStorage.setItem("data", JSON.stringify(data))
+}

@@ -216,7 +216,7 @@
                         </div>
                         <div class="line"></div>
                         <div class="square second-square-chess">
-                            <h1>2</h1>
+                            <h1 class="second-square-personal-inside">2</h1>
                         </div>
                     </div>
 
@@ -240,23 +240,23 @@
                         <div class="current" tabindex="1">
 
                             <div class="box-value">
-                                <input class="box-input box-input-first" type="radio" id="first-0" value="1"
+                                <input class="box-input box-input-first" type="radio" id="first-0" value="beginner"
                                     name="first-box" checked="checked" />
                                 <p class="box-input-text">Beginner</p>
                             </div>
                             <div class="box-value">
-                                <input class="box-input box-input-first" type="radio" id="first-1" value="2"
+                                <input class="box-input box-input-first" type="radio" id="first-1" value="normal"
                                     name="first-box" checked="checked" />
                                 <p class="box-input-text">Intermediate</p>
                             </div>
                             <div class="box-value">
-                                <input class="box-input box-input-first" type="radio" id="first-2" value="3"
+                                <input class="box-input box-input-first" type="radio" id="first-2" value="professional"
                                     name="first-box" checked="checked" />
                                 <p class="box-input-text">Professional</p>
                             </div>
 
                             <div class="box-value">
-                                <input class="box-input box-input-first" type="radio" name="first-box"
+                                <input class="box-input box-input-first" type="radio" name="first-box" value=""
                                     checked="checked" />
                                 <p class="box-input-text">level of knowledge<span class="star">
                                         *</span></p>
@@ -289,9 +289,11 @@
                         <h1>Have you participated in the Redberry Championship?<span class="star">*</span></h1>
 
                         <div class="participated-radio-options">
-                            <input type="radio" id="yes" name="participated-question" class="participated-question">
+                            <input type="radio" id="yes" value="true" name="participated-question"
+                                class="participated-question answer-yes">
                             <label for="yes">Yes</label>
-                            <input type="radio" id="no" name="participated-question" class="participated-question">
+                            <input type="radio" id="no" value="false" name="participated-question"
+                                class="participated-question answer-no">
                             <label for="no">No</label>
                         </div>
                     </div>
@@ -350,5 +352,3 @@
 </body>
 
 </html>
-
-<img src="./images/magnus.jpg">
