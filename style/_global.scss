@@ -36,6 +36,8 @@ input {
 
 }
 
+
+
 button {
     @include flex(center, row);
     font-family: 'Open Sans', sans-serif;
@@ -92,18 +94,21 @@ button {
     background: url("../images/unsplash_27LH_0jXKYI3.png");
 }
 
-/* width */
 ::-webkit-scrollbar {
     width: 4px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
     background: #E9ECEF;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: #CBCFD2;
     border-radius: 4px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: transparent;
 }

@@ -24,7 +24,7 @@ const secondBox = document.querySelector(".second-box")
 const secondSquare = document.querySelector(".second-square-chess")
 const boxInputFirst = document.querySelectorAll(".box-input-first")
 let boxInputSecond; // 'Choose your character selector' is generated from API and creating variable requires delay
-setTimeout(createBoxInputSecond, 150)
+setTimeout(createBoxInputSecond, 500)
 function createBoxInputSecond() {
     boxInputSecond = document.querySelectorAll(".box-input-second")
 }
@@ -121,6 +121,7 @@ nextButtons.forEach((button, index) => {
                         },
                         body: JSON.stringify(data)
                     })
+                    clearData()
                     currentStep++
                 }
 
@@ -287,11 +288,7 @@ function convertDateToDefault(date) {
     return date.slice(5, 7) + '/' + date.slice(8) + '/' + date.slice(0, 4)
 }
 
-
-// On Page Load
-
-// Create empty object in localStorage or parse data from already created one
-if (localStorage.getItem("data") === null) {
+function clearData() {
     const data = {
         "name": "",
         "email": "",
@@ -302,6 +299,13 @@ if (localStorage.getItem("data") === null) {
         "character_id": ""
     }
     localStorage.setItem("data", JSON.stringify(data))
+}
+
+// On Page Load
+
+// Create empty object in localStorage or parse data from already created one
+if (localStorage.getItem("data") === null) {
+    clearData()
 }
 
 const data = JSON.parse(localStorage.getItem("data"))
@@ -337,7 +341,7 @@ boxInputFirst.forEach(element => {
     }
 })
 // Choose your character
-setTimeout(boxInputSecondDelay, 150)
+setTimeout(boxInputSecondDelay, 500)
 function boxInputSecondDelay() {
     boxInputSecond.forEach(element => {
         element.addEventListener('change', () => {

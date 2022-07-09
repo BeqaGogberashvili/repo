@@ -162,7 +162,7 @@
 
                     <div class="input-placeholder">
                         <input type="text" name="phone" class="phone" maxlength="9" required
-                            oninput="validation(this);this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" />
+                            oninput="validation(this);this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').replace(/./g, '')" />
                         <div class="placeholder">
                             Phone number <span>*</span>
                         </div>
