@@ -145,7 +145,8 @@
                 <div class="personal-inputs">
 
                     <div class="input-placeholder">
-                        <input type="text" name="name" class="name" oninput="validation(this)" required>
+                        <input type="text" name="name" class="name" oninput="oninputUpdate(this)" autocomplete="off"
+                            required>
                         <div class="placeholder">
                             Name <span>*</span>
                         </div>
@@ -153,7 +154,8 @@
                     </div>
 
                     <div class="input-placeholder">
-                        <input type="text" name="email" class="email" oninput="validation(this)" required>
+                        <input type="text" name="email" class="email" oninput="oninputUpdate(this)" autocomplete="off"
+                            required>
                         <div class="placeholder">
                             Email address <span>*</span>
                         </div>
@@ -162,7 +164,8 @@
 
                     <div class="input-placeholder">
                         <input type="text" name="phone" class="phone" maxlength="9" required
-                            oninput="validation(this);this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').replace(/./g, '')" />
+                            oninput="oninputUpdate(this);this.value = this.value.replace(/[^0-9.]/g, '').replace('.','')"
+                            autocomplete="off" />
                         <div class="placeholder">
                             Phone number <span>*</span>
                         </div>

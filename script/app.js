@@ -1,4 +1,4 @@
-// Variables
+//      VARIABLES:
 
 const steps = document.querySelectorAll(".step")
 const nextButtons = document.querySelectorAll(".next")
@@ -23,19 +23,20 @@ const participatedQuestion = document.querySelectorAll(".participated-question")
 const secondBox = document.querySelector(".second-box")
 const secondSquare = document.querySelector(".second-square-chess")
 const boxInputFirst = document.querySelectorAll(".box-input-first")
-let boxInputSecond; // 'Choose your character selector' is generated from API and creating variable requires delay
+let boxInputSecond; // This value is generated from API and creating variable requires delay
 setTimeout(createBoxInputSecond, 500)
 function createBoxInputSecond() {
     boxInputSecond = document.querySelectorAll(".box-input-second")
 }
 
-
 let currentStep = 0
 displayCurrentStep(currentStep)
 
-// Functions
 
-// Display
+//      FUNCTIONS:
+
+
+//      Display step
 function displayCurrentStep(currentStep) {
     steps.forEach(step => {
         step.style.display = "none"
@@ -44,7 +45,7 @@ function displayCurrentStep(currentStep) {
 }
 
 
-// Next button
+//      Next button
 nextButtons.forEach((button, index) => {
     button.addEventListener('click', (e) => {
         e.preventDefault()
@@ -56,7 +57,6 @@ nextButtons.forEach((button, index) => {
                 break;
 
             case 1: // Personal Information page
-                //Validating
 
                 // Name
                 if (data.name.length > 2) {
@@ -91,6 +91,7 @@ nextButtons.forEach((button, index) => {
                     dateError.style.display = "block"
                     date.classList.add("error-input")
                 }
+
                 // If errors are hidden, inputs are valid
                 let valid = true;
                 errors.forEach(error => {
@@ -114,6 +115,7 @@ nextButtons.forEach((button, index) => {
                         data.already_participated = false
                     }
 
+                    console.log(data);
                     fetch("https://chess-tournament-api.devtest.ge/api/register", {
                         method: 'POST',
                         headers: {
@@ -124,16 +126,14 @@ nextButtons.forEach((button, index) => {
                     clearData()
                     currentStep++
                 }
-
                 break;
         }
-
         displayCurrentStep(currentStep)
     })
 })
 
 
-// Back button
+//      Back button
 backButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         e.preventDefault();
@@ -141,25 +141,13 @@ backButtons.forEach(button => {
         errors.forEach(error => {
             error.style.display = "none";
         });
-
         currentStep--
         displayCurrentStep(currentStep)
     })
 })
 
 
-
-// Popup X button
-x.forEach(element => {
-    element.addEventListener("click", (e) => {
-        e.target.parentElement.parentElement.style.display = "none"
-    })
-});
-
-// Custom date picker
-flatpickr(".date-input", {});
-
-// Getting data from API & Generating select
+//      Getting data from API & Generating select
 
 const current = document.createElement("div")
 current.classList.add("current")
@@ -234,27 +222,25 @@ secondBox.appendChild(current)
 secondBox.appendChild(boxList)
 
 
-// Oninput Validation
+// Oninput update data in localStorage
 
-function validation(input) {
+function oninputUpdate(input) {
 
     switch (input.name) {
 
-        case "name":
+        case "name-input":
             setLocal(input, 0, input.value.length > 2)
             break;
 
-        case "email":
+        case "email-input":
             setLocal(input, 1, input.value.split('@')[1] === 'redberry.ge')
             break;
 
-        case "phone":
+        case "phone-input":
             setLocal(input, 2, phone.value.length === 9)
             break;
     }
-
 }
-
 
 function setLocal(input, index, condition,) {
     if (condition) {
@@ -272,9 +258,7 @@ function setLocal(input, index, condition,) {
 date.addEventListener('change', () => {
     if (date.value !== "") {
         date.value = convertDateToDefault(date.value)
-
         updateDataLocaly("date_of_birth", date.value)
-
         dateStar.style.display = "none"
         successInput[3].style.display = "block"
         progressPersonal.style.backgroundColor = "#E9FAF1"
@@ -282,39 +266,21 @@ date.addEventListener('change', () => {
 })
 
 
+//      On Page Load
 
-// Converting date to match API
-function convertDateToDefault(date) {
-    return date.slice(5, 7) + '/' + date.slice(8) + '/' + date.slice(0, 4)
-}
-
-function clearData() {
-    const data = {
-        "name": "",
-        "email": "",
-        "phone": "",
-        "date_of_birth": "",
-        "experience_level": "",
-        "already_participated": "",
-        "character_id": ""
-    }
-    localStorage.setItem("data", JSON.stringify(data))
-}
-
-// On Page Load
-
-// Create empty object in localStorage or parse data from already created one
+// Creating empty object in localStorage if there's not one
 if (localStorage.getItem("data") === null) {
     clearData()
 }
 
+// Parsing data
 const data = JSON.parse(localStorage.getItem("data"))
-//      Personal Information
+// Changing Personal Information inputs with object values
 nameInput.value = data.name
 email.value = data.email
 phone.value = data.phone
 date.value = data.date_of_birth
-
+// Validated inputs get green checkmark and progress also lights up green
 const validArray = [nameInput.value.length > 2, email.value.split('@')[1] === 'redberry.ge', phone.value.length === 9, date.value !== ""]
 
 for (let i = 0; i < 4; i++) {
@@ -328,7 +294,7 @@ if (date.value !== "") {
     dateStar.style.display = "none"
 }
 
-//      Chess Experience
+//      Chess Experience inputs
 
 // Level of knowledge
 boxInputFirst.forEach(element => {
@@ -371,5 +337,38 @@ if (data.already_participated === "false") {
 function updateDataLocaly(key, value) {
     const data = JSON.parse(localStorage.getItem("data"))
     data[key] = value
+    localStorage.setItem("data", JSON.stringify(data))
+}
+
+
+
+//      Other stuff
+
+// Popup X button
+x.forEach(element => {
+    element.addEventListener("click", (e) => {
+        e.target.parentElement.parentElement.style.display = "none"
+    })
+});
+
+// Custom date picker
+flatpickr(".date-input", {});
+
+// Convert date to match API
+function convertDateToDefault(date) {
+    return date.slice(5, 7) + '/' + date.slice(8) + '/' + date.slice(0, 4)
+}
+
+// Clear data localy (used after submition)
+function clearData() {
+    const data = {
+        "name": "",
+        "email": "",
+        "phone": "",
+        "date_of_birth": "",
+        "experience_level": "",
+        "already_participated": "",
+        "character_id": ""
+    }
     localStorage.setItem("data", JSON.stringify(data))
 }
