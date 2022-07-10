@@ -1,4 +1,4 @@
-//      VARIABLES:
+//      Variables:
 
 const steps = document.querySelectorAll(".step")
 const nextButtons = document.querySelectorAll(".next")
@@ -29,14 +29,15 @@ function createBoxInputSecond() {
     boxInputSecond = document.querySelectorAll(".box-input-second")
 }
 
-let currentStep = 0
+
+let currentStep = 1
 displayCurrentStep(currentStep)
 
 
-//      FUNCTIONS:
+//      Main Functions:
 
 
-//      Display step
+// Display step
 function displayCurrentStep(currentStep) {
     steps.forEach(step => {
         step.style.display = "none"
@@ -45,7 +46,7 @@ function displayCurrentStep(currentStep) {
 }
 
 
-//      Next button
+// Next button
 nextButtons.forEach((button, index) => {
     button.addEventListener('click', (e) => {
         e.preventDefault()
@@ -64,11 +65,6 @@ nextButtons.forEach((button, index) => {
                 } else {
                     nameError.style.display = "block"
                     nameInput.classList.add("error-input")
-                    if (data.name == "") {
-                        nameErrorText.innerText = "Name can not be empty"
-                    } else {
-                        nameErrorText.innerText = "Name must have more than 2 characters"
-                    }
                 }
                 // Email
                 if (data.email.split('@')[1] === 'redberry.ge') {
@@ -92,6 +88,7 @@ nextButtons.forEach((button, index) => {
                     date.classList.add("error-input")
                 }
 
+
                 // If errors are hidden, inputs are valid
                 let valid = true;
                 errors.forEach(error => {
@@ -108,6 +105,7 @@ nextButtons.forEach((button, index) => {
 
                 if (data.experience_level !== "" && data.already_participated !== "" & data.character_id !== "") {
 
+                    chessExperienceError.style.display = "none"
                     data.character_id = parseInt(data.character_id)
                     if (data.already_participated === "true") {
                         data.already_participated = true
@@ -125,6 +123,8 @@ nextButtons.forEach((button, index) => {
                     })
                     clearData()
                     currentStep++
+                } else {
+                    chessExperienceError.style.display = "block"
                 }
                 break;
         }
@@ -133,7 +133,7 @@ nextButtons.forEach((button, index) => {
 })
 
 
-//      Back button
+// Back button
 backButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         e.preventDefault();
@@ -147,7 +147,7 @@ backButtons.forEach(button => {
 })
 
 
-//      Getting data from API & Generating select
+// Getting data from API & Generating select
 
 const current = document.createElement("div")
 current.classList.add("current")
@@ -228,18 +228,19 @@ function oninputUpdate(input) {
 
     switch (input.name) {
 
-        case "name-input":
+        case "name":
             setLocal(input, 0, input.value.length > 2)
             break;
 
-        case "email-input":
+        case "email":
             setLocal(input, 1, input.value.split('@')[1] === 'redberry.ge')
             break;
 
-        case "phone-input":
+        case "phone":
             setLocal(input, 2, phone.value.length === 9)
             break;
     }
+    input.classList.remove("error-input")
 }
 
 function setLocal(input, index, condition,) {
@@ -256,17 +257,14 @@ function setLocal(input, index, condition,) {
 
 // Date input needs special treatment since it's not default date type
 date.addEventListener('change', () => {
-    if (date.value !== "") {
-        date.value = convertDateToDefault(date.value)
-        updateDataLocaly("date_of_birth", date.value)
-        dateStar.style.display = "none"
-        successInput[3].style.display = "block"
-        progressPersonal.style.backgroundColor = "#E9FAF1"
-    }
+    updateDataLocaly("date_of_birth", convertDateForApi(date.value))
+    dateStar.style.display = "none"
+    successInput[3].style.display = "block"
+    progressPersonal.style.backgroundColor = "#E9FAF1"
 })
 
 
-//      On Page Load
+// On Page Load
 
 // Creating empty object in localStorage if there's not one
 if (localStorage.getItem("data") === null) {
@@ -279,8 +277,11 @@ const data = JSON.parse(localStorage.getItem("data"))
 nameInput.value = data.name
 email.value = data.email
 phone.value = data.phone
-date.value = data.date_of_birth
+if (data.date_of_birth !== "") {
+    date.value = convertDateForLocal(data.date_of_birth)
+}
 // Validated inputs get green checkmark and progress also lights up green
+
 const validArray = [nameInput.value.length > 2, email.value.split('@')[1] === 'redberry.ge', phone.value.length === 9, date.value !== ""]
 
 for (let i = 0; i < 4; i++) {
@@ -294,7 +295,7 @@ if (date.value !== "") {
     dateStar.style.display = "none"
 }
 
-//      Chess Experience inputs
+// Chess Experience inputs
 
 // Level of knowledge
 boxInputFirst.forEach(element => {
@@ -333,16 +334,7 @@ if (data.already_participated === "false") {
 }
 
 
-// Make changes in localStorage object
-function updateDataLocaly(key, value) {
-    const data = JSON.parse(localStorage.getItem("data"))
-    data[key] = value
-    localStorage.setItem("data", JSON.stringify(data))
-}
-
-
-
-//      Other stuff
+//      Other Functions
 
 // Popup X button
 x.forEach(element => {
@@ -354,9 +346,12 @@ x.forEach(element => {
 // Custom date picker
 flatpickr(".date-input", {});
 
-// Convert date to match API
-function convertDateToDefault(date) {
+// Convert date to match API or input type date
+function convertDateForApi(date) {
     return date.slice(5, 7) + '/' + date.slice(8) + '/' + date.slice(0, 4)
+}
+function convertDateForLocal(date) {
+    return date.slice(6) + '-' + date.slice(0, 2) + '-' + date.slice(3, 5)
 }
 
 // Clear data localy (used after submition)
@@ -372,3 +367,23 @@ function clearData() {
     }
     localStorage.setItem("data", JSON.stringify(data))
 }
+
+// Make changes in localStorage object
+function updateDataLocaly(key, value) {
+    const data = JSON.parse(localStorage.getItem("data"))
+    data[key] = value
+    localStorage.setItem("data", JSON.stringify(data))
+}
+
+
+
+
+
+// I want to say a bit about me (if you're interested)
+
+// I took part in your previous bootcamp. At the time I had little experience and whatever I found on the internet I threw into my code for the sake of working.
+
+// Since then I've learned basics of many things, but still I often struggle finding a proper way of doing things and I don't really have anyone to teach me. That's why most of the functionalities are done by me playing around.
+
+// All I want to say is, I'm very good at doing what I've been told. If you approve me, I will prove myself worthy of your time and resources.
+
