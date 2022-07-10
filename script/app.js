@@ -30,7 +30,7 @@ function createBoxInputSecond() {
 }
 
 
-let currentStep = 1
+let currentStep = 2
 displayCurrentStep(currentStep)
 
 
@@ -67,7 +67,7 @@ nextButtons.forEach((button, index) => {
                     nameInput.classList.add("error-input")
                 }
                 // Email
-                if (data.email.split('@')[1] === 'redberry.ge') {
+                if (data.email.split('@')[1] === 'redberry.ge' && data.email.split('@')[0].length > 2) {
                     emailError.style.display = "none"
                 } else {
                     emailError.style.display = "block"
@@ -87,7 +87,6 @@ nextButtons.forEach((button, index) => {
                     dateError.style.display = "block"
                     date.classList.add("error-input")
                 }
-
 
                 // If errors are hidden, inputs are valid
                 let valid = true;
@@ -233,7 +232,7 @@ function oninputUpdate(input) {
             break;
 
         case "email":
-            setLocal(input, 1, input.value.split('@')[1] === 'redberry.ge')
+            setLocal(input, 1, input.value.split('@')[1] === 'redberry.ge' && input.value.split('@')[0].length > 2)
             break;
 
         case "phone":
@@ -246,7 +245,7 @@ function oninputUpdate(input) {
 function setLocal(input, index, condition,) {
     if (condition) {
         successInput[index].style.display = "block"
-        progressPersonal.style.backgroundColor = "#E9FAF1"
+        progressBackground(progressPersonal)
 
     } else {
         successInput[index].style.display = "none"
@@ -260,7 +259,7 @@ date.addEventListener('change', () => {
     updateDataLocaly("date_of_birth", convertDateForApi(date.value))
     dateStar.style.display = "none"
     successInput[3].style.display = "block"
-    progressPersonal.style.backgroundColor = "#E9FAF1"
+    progressBackground(progressPersonal)
 })
 
 
@@ -277,20 +276,16 @@ const data = JSON.parse(localStorage.getItem("data"))
 nameInput.value = data.name
 email.value = data.email
 phone.value = data.phone
-if (data.date_of_birth !== "") {
-    date.value = convertDateForLocal(data.date_of_birth)
-}
+date.value = convertDateForLocal(data.date_of_birth)
+
 // Validated inputs get green checkmark and progress also lights up green
-
-const validArray = [nameInput.value.length > 2, email.value.split('@')[1] === 'redberry.ge', phone.value.length === 9, date.value !== ""]
-
+const validArray = [nameInput.value.length > 2, email.value.split('@')[1] === 'redberry.ge' && email.value.split('@')[0].length > 2, phone.value.length === 9, date.value !== ""]
 for (let i = 0; i < 4; i++) {
     if (validArray[i]) {
-        progressPersonal.style.backgroundColor = "#E9FAF1"
+        progressBackground(progressPersonal)
         successInput[i].style.display = "block"
     }
 }
-
 if (date.value !== "") {
     dateStar.style.display = "none"
 }
@@ -302,9 +297,9 @@ boxInputFirst.forEach(element => {
     element.addEventListener('change', () => {
         updateDataLocaly("experience_level", element.value)
     })
-    if (element.value == data.experience_level) {
+    if (element.value == data.experience_level && data.experience_level !== "") {
         element.checked = true;
-        progressChess.style.backgroundColor = "#E9FAF1"
+        progressBackground(progressChess)
     }
 })
 // Choose your character
@@ -316,7 +311,7 @@ function boxInputSecondDelay() {
         })
         if (element.value == data.character_id) {
             element.checked = true;
-            progressChess.style.backgroundColor = "#E9FAF1"
+            progressBackground(progressChess)
         }
     });
 }
@@ -324,17 +319,20 @@ function boxInputSecondDelay() {
 participatedQuestion.forEach(element => {
     element.addEventListener('change', () => {
         updateDataLocaly("already_participated", element.value)
+        progressBackground(progressChess)
     })
 })
-if (data.already_participated === "true") {
-    document.querySelector(".answer-yes").checked = true
-}
-if (data.already_participated === "false") {
-    document.querySelector(".answer-no").checked = true
+if (data.already_participated !== "") {
+    progressBackground(progressChess)
+    if (data.already_participated === "true") {
+        document.querySelector(".answer-yes").checked = true
+    } else {
+        document.querySelector(".answer-no").checked = true
+    }
 }
 
 
-//      Other Functions
+//      Other Stuff
 
 // Popup X button
 x.forEach(element => {
@@ -368,6 +366,11 @@ function clearData() {
     localStorage.setItem("data", JSON.stringify(data))
 }
 
+// Light green background color
+function progressBackground(progress) {
+    progress.style.backgroundColor = "#E9FAF1"
+}
+
 // Make changes in localStorage object
 function updateDataLocaly(key, value) {
     const data = JSON.parse(localStorage.getItem("data"))
@@ -381,9 +384,11 @@ function updateDataLocaly(key, value) {
 
 // I want to say a bit about me (if you're interested)
 
-// I took part in your previous bootcamp. At the time I had little experience and whatever I found on the internet I threw into my code for the sake of working.
+// First bootcamp was my first ever project. All I knew was little bit of CSS and none of the JS. Basicly whatever I found on the internet I threw into my code for the sake of working.
 
-// Since then I've learned basics of many things, but still I often struggle finding a proper way of doing things and I don't really have anyone to teach me. That's why most of the functionalities are done by me playing around.
+// Since then I've been learning many things, but still I often struggle finding proper ways for certain functions and I don't really have anyone to teach me, that's why my code looks so rough.
 
-// All I want to say is, I'm very good at doing what I've been told. If you approve me, I will prove myself worthy of your time and resources.
+// All I want to say is, I'm much better at doing what I've been told. If you approve me, I WILL prove myself worthy of your time and resources.
+
+// Regardless, I'm more than thankful of experience I've gained from working on actual project.
 
