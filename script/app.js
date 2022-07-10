@@ -30,7 +30,7 @@ function createBoxInputSecond() {
 }
 
 
-let currentStep = 2
+let currentStep = 0
 displayCurrentStep(currentStep)
 
 
