@@ -29,13 +29,10 @@ function createBoxInputSecond() {
     boxInputSecond = document.querySelectorAll(".box-input-second")
 }
 
-
 let currentStep = 0
 displayCurrentStep(currentStep)
 
-
 //      Main Functions:
-
 
 // Display step
 function displayCurrentStep(currentStep) {
@@ -344,7 +341,7 @@ x.forEach(element => {
 // Custom date picker
 flatpickr(".date-input", {});
 
-// Convert date to match API or input type date
+// Convert date to match API or custon date
 function convertDateForApi(date) {
     return date.slice(5, 7) + '/' + date.slice(8) + '/' + date.slice(0, 4)
 }
@@ -386,9 +383,11 @@ function updateDataLocaly(key, value) {
 
 // First bootcamp was my first ever project. All I knew was little bit of CSS and none of the JS. Basicly whatever I found on the internet I threw into my code for the sake of working.
 
-// Since then I've been learning many things, but still I often struggle finding proper ways for certain functions and I don't really have anyone to teach me, that's why my code looks so rough.
+// Since then I've been learning many things, but still I often struggle finding proper ways for writing certain functions and I don't really have anyone to teach me, that's why my code looks so rough.
 
 // All I want to say is, I'm much better at doing what I've been told. If you approve me, I WILL prove myself worthy of your time and resources.
 
 // Regardless, I'm more than thankful of experience I've gained from working on actual project.
+
+//
 

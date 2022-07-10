@@ -32,6 +32,7 @@ input {
     &:focus {
         outline: none;
         background-color: #E9ECEF;
+        transition: 0.2s all ease-in-out;
     }
 
 }

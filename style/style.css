@@ -46,6 +46,8 @@ input:hover {
 input:focus {
   outline: none;
   background-color: #E9ECEF;
+  -webkit-transition: 0.2s all ease-in-out;
+  transition: 0.2s all ease-in-out;
 }
 
 button {
