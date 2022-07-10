@@ -374,20 +374,3 @@ function updateDataLocaly(key, value) {
     data[key] = value
     localStorage.setItem("data", JSON.stringify(data))
 }
-
-
-
-
-
-// I want to say a bit about me (if you're interested)
-
-// First bootcamp was my first ever project. All I knew was little bit of CSS and none of the JS. Basicly whatever I found on the internet I threw into my code for the sake of working.
-
-// Since then I've been learning many things, but still I often struggle finding proper ways for writing certain functions and I don't really have anyone to teach me, that's why my code looks so rough.
-
-// All I want to say is, I'm much better at doing what I've been told. If you approve me, I WILL prove myself worthy of your time and resources.
-
-// Regardless, I'm more than thankful of experience I've gained from working on actual project.
-
-//
-
