@@ -109,7 +109,6 @@ nextButtons.forEach((button, index) => {
                         data.already_participated = false
                     }
 
-                    console.log(data);
                     fetch("https://chess-tournament-api.devtest.ge/api/register", {
                         method: 'POST',
                         headers: {
