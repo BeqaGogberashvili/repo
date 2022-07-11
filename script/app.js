@@ -1,4 +1,4 @@
-//      Variables:
+//       Variables:
 
 const steps = document.querySelectorAll(".step");
 const nextButtons = document.querySelectorAll(".next");
