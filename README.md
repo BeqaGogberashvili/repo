@@ -1,5 +1,5 @@
 
-<p align="center">Movie Quotes<img src="#" width="100" alt="Movie Quotes Logo"></p>
+<p><img src="readme/assets/movie-quotes.jpg" width="100" alt="Movie Quotes Logo"></p>
 
 <p>Movie Quotes app is a platform where you can store your movies and quotes.</p>
 
@@ -14,6 +14,7 @@
 * [Migrations](#migration)
 * [Development](#development)
 * [DrawSQL](#drawsql)
+* [Registration](#registration)
 
 
 #
@@ -45,6 +46,7 @@ composer install
 
 
 And now you should provide **.env** file all the necessary environment variables:
+(Remember to set FILESYSTEM_DISK=local to FILESYSTEM_DISK=public)
 
 #
 **MYSQL:**
@@ -143,6 +145,30 @@ Run Laravel's built-in development server by executing:
 ```sh
   php artisan serve
 ```
+
+#
+### Registration
+
+Since app has no registration page you must do it manualy in order to make changes.
+You must use tinker for it.
+
+```sh
+php artisan tinker
+```
+
+Inside tinker we type following:
+
+```sh
+use \App\Models\User;
+```
+
+And for last step we create new user by replacing empty spaces between double quotes with our credentials:
+
+```sh
+User::create(["name"=>"", "email"=>"", "password"=>""]);
+```
+
+All Done!
 
 #
 ### DrawSQL
