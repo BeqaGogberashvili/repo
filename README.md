@@ -1,5 +1,5 @@
 
-<p><img src="readme/assets/movie-quotes.jpg" width="100" alt="Movie Quotes Logo"></p>
+<p><img src="readme/assets/movie-quotes.png" width="100" alt="Movie Quotes Logo"></p>
 
 <p>Movie Quotes app is a platform where you can store your movies and quotes.</p>
 
